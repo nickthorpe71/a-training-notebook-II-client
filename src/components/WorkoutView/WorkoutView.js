@@ -10,9 +10,9 @@ export default class WorkoutView extends React.Component {
     this.state = {
       user_id: TokenService.getUserId(),
       title: '',
-      workout_start_time: new Date().getTime(),
-      workout_end_time: new Date().getTime(),
-      workout_date: new Date(),
+      workout_start_time: this.extractTime(new Date()),
+      workout_end_time: this.extractTime(new Date()),
+      workout_date: this.extractDate(new Date()),
       exercises: '',
     };
   }
@@ -24,17 +24,25 @@ export default class WorkoutView extends React.Component {
       const workout_id = this.props.match.params.workoutId;
       WorkoutsApiService.getWorkoutById(workout_id)
         .then(workout => {
+          const workoutToInsert = {
+            id: workout[0].id,
+            user_id: workout[0].user_id,
+            title: workout[0].title,
+            workout_start_time: (workout[0].workout_start_time).slice(0, 5),
+            workout_end_time: (workout[0].workout_end_time).slice(0, 5),
+            workout_date: this.extractDate(new Date(workout[0].workout_date)),
+            exercises: workout[0].exercises,
+          }
+
           this.setState({
-            ...workout
+            ...workoutToInsert
           })
         })
-    } else {
-      this.setState({
-        workout_date: this.extractDate(this.context.selectedDate),
-        workout_start_time: this.extractTime(new Date()),
-        workout_end_time: this.extractTime(new Date())
-      });
     }
+    this.setState({
+      workout_date: this.extractDate(this.context.selectedDate),
+    });
+
   }
 
   extractDate = (date) => {
@@ -53,6 +61,7 @@ export default class WorkoutView extends React.Component {
       WorkoutsApiService.postWorkout(this.state);
     } else {
       console.log('we are editing a workout')
+      console.log(this.state.id)
       WorkoutsApiService.updateWorkout(this.state.id, this.state);
     }
 
@@ -145,7 +154,7 @@ export default class WorkoutView extends React.Component {
             cols="30"
             rows="50"
             onChange={this.handleChange}
-            value={this.getFromState('ecercises')}
+            value={this.getFromState('exercises')}
           ></textarea>
           <section className="workout-view-footer">
             <div>
