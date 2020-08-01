@@ -1,7 +1,5 @@
 import React from 'react';
 import Context from '../../MainContext';
-import WorkoutHeader from './WorkoutHeader/WorkoutHeader'
-import ExerciseTable from './ExerciseTable/ExerciseTable'
 import TokenService from '../../services/token-service'
 import WorkoutsApiService from '../../services/workouts-api-service'
 import './WorkoutView.css';
@@ -10,13 +8,12 @@ export default class WorkoutView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numSetsPer: 0,
-      numExercises: 0,
-      workoutTitle: '',
-      workoutTime: '',
-      notes: '',
-      workoutDate: new Date(),
-      currentWorkout: {},
+      user_id: TokenService.getUserId(),
+      title: '',
+      workout_start_time: new Date().getTime(),
+      workout_end_time: new Date().getTime(),
+      workout_date: new Date(),
+      exercises: '',
     };
   }
 
@@ -25,230 +22,59 @@ export default class WorkoutView extends React.Component {
   componentDidMount = () => {
     if (this.props.match.params.workoutId !== 'new') {
       const workout_id = this.props.match.params.workoutId;
-
-      const date = new Date();
-      const timestamp = date.getTime();
-
       WorkoutsApiService.getWorkoutById(workout_id)
         .then(workout => {
-          const numExercises = workout.exercises.length;
-          let numSets = 0;
-
-          workout.exercises.forEach(exercise => {
-            if (exercise.sets.length > numSets)
-              numSets = exercise.sets.length
-          })
-
           this.setState({
-            numSetsPer: numSets,
-            numExercises: numExercises,
-            workoutTitle: workout.title,
-            workoutTime: timestamp,
-            workoutDate: workout.workout_date,
-            currentWorkout: workout
+            ...workout
           })
-
-          this.setExercisesAndSetsInState(workout.exercises);
-
         })
     } else {
       this.setState({
-        numExercises: 6,
-        numSetsPer: 4,
         date: this.setDate(this.context.selectedDate)
       })
     }
   }
 
-  // setExercisesAndSetsInState = (exercises) => {
-  //   const allKeys = {};
-
-  //   exercises.forEach((exercise, indexEx) => {
-  //     allKeys[`exercise${indexEx}`] = exercise.title;
-  //     exercise.sets.forEach((set, indexSet) => {
-  //       allKeys[`weight${indexEx}_${indexSet}`] = set.weight;
-  //       allKeys[`reps${indexEx}_${indexSet}`] = set.reps;
-  //     });
-  //   });
-
-  //   this.setState({
-  //     ...this.state,
-  //     ...allKeys
-  //   });
-  // }
-
-  handleDeleteClick = (event) => {
-    event.preventDefault();
-    WorkoutsApiService.deleteWorkout(this.state.currentWorkout.id);
-    this.props.history.push('/');
+  setDate = (workout_date) => {
+    this.setState({ workout_date });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let modDate = new Date();
-
-    if (this.state && this.state.workoutDate) {
-      modDate = new Date(
-        new Date(this.state.workoutDate).getFullYear(),
-        new Date(this.state.workoutDate).getMonth(),
-        new Date(this.state.workoutDate).getDate()
-      ).toUTCString()
-    }
-
-    const workoutObj = {
-      user_id: TokenService.getUserId(),
-      title: this.state.workoutTitle,
-      notes: this.state.notes,
-      time: this.state.workoutTime,
-      date: modDate,
-      exercises: []
-    }
-
-    for (const [key, value] of Object.entries(this.state)) {
-      if (key.includes('exercise')) {
-        let newExId = -1;
-        if (key.charAt(8) in this.state.currentWorkout.exercises)
-          newExId = this.state.currentWorkout.exercises[key.charAt(8)].id;
-        const newExercise = {
-          id: newExId,
-          title: value,
-          sets: []
-        }
-        workoutObj.exercises.push(newExercise);
-      }
-      if (key.includes('weight') && this.state.currentWorkout.exercises[key.charAt(6)]) {
-        let newSetId = -1;
-        if (key.charAt(6) in this.state.currentWorkout.exercises && key.charAt(8) in this.state.currentWorkout.exercises[key.charAt(6)].sets)
-          newSetId = this.state.currentWorkout.exercises[key.charAt(6)].sets[key.charAt(8)].id
-        const newSet = {
-          id: newSetId,
-          setNum: key.charAt(8),
-          weight: value,
-          reps: 0,
-        }
-        if (workoutObj.exercises && 'sets' in workoutObj.exercises[key.charAt(6)])
-          workoutObj.exercises[key.charAt(6)].sets.push(newSet);
-      }
-      if (key.includes('reps')) {
-        if (key.charAt(6) in workoutObj.exercises[key.charAt(4)].sets)
-          if (workoutObj.exercises && workoutObj.exercises[key.charAt(4)] && 'reps' in workoutObj.exercises[key.charAt(4)].sets[key.charAt(6)])
-            workoutObj.exercises[key.charAt(4)].sets[key.charAt(6)].reps = value;
-      }
-    }
 
     if (this.props.match.params.workoutId === 'new') {
       console.log('we are posting a new workout')
-      WorkoutsApiService.postWorkout(workoutObj);
+      WorkoutsApiService.postWorkout(this.state);
     } else {
       console.log('we are editing a workout')
-      WorkoutsApiService.updateWorkout(this.props.match.params.workoutId, workoutObj);
+      WorkoutsApiService.updateWorkout(this.state.id, this.state);
     }
 
     this.props.history.push('/');
   }
 
-  setDate = (date) => {
-    // const newDate = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
-    //   '-' + date.getDate().toString().padStart(2, 0);
-    this.setState({ workoutDate: date });
-  }
-
-  getNotes = () => {
-    if (this.props.match.params.workoutId === 'new')
-      return this.state.currentWorkout.notes;
-    return '';
-  }
-
-  getSetsCount = () => {
-    return this.state.numSetsPer;
-  }
-
-  getExerciseCount = () => {
-    return this.state.numExercises;
-  }
-
-  handlieBackButton = () => {
+  handleDeleteClick = (event) => {
+    event.preventDefault();
+    WorkoutsApiService.deleteWorkout(this.state.id);
     this.props.history.push('/');
   }
 
-  //when the exercises
+  handleBackButton = () => {
+    this.props.history.push('/');
+  }
 
   handleChange = (event) => {
     event.preventDefault();
     const value = event.target.value;
-    const name = event.target.name;
-
-    const newWorkout = this.state.currentWorkout;
-    let numExercises = this.state.numExercises;
-    let numSetsPer = this.state.numExercises;
-    let workoutTitle = this.state.workoutTitle;
-    let workoutTime = this.state.workoutTime;
-    let notes = this.state.notes;
-    let workoutDate = this.state.workoutDate;
-
-    const emptySet = {
-      id: -1,
-      exercise_id: 0,
-      setNum: 0,
-      weight: '',
-      reps: 0,
-    }
-
-    const emptySetsArr = [];
-
-    for (let i = 0; i < this.state.numSetsPer; i++) {
-      const innerSet = emptySet;
-      innerSet.setNum = i;
-      emptySetsArr.push(innerSet);
-    }
-
-    const emptyExercise = {
-      id: -1,
-      title: '',
-      sets: emptySetsArr
-    }
-
-    //if name includes numExercises then make sure there are enough exercises in the current workouts exercise array
-    //if name includes numSetsPer then make sure there are enough sets in each exercise of current workouts 
-
-    if (name.includes('exercise'))
-      newWorkout.exercises[name.charAt(8)].title = value;
-
-    if (name.includes('weight'))
-      newWorkout.exercises[name.charAt(6)].sets[name.charAt(8)].weight = value;
-
-    if (name.includes('numExercises')) {
-      while (newWorkout.exercises.length > value) {
-        newWorkout.exexercises.pop();
-      }
-      while (newWorkout.exercises.length < value) {
-        newWorkout.exercises.push(emptyExercise);
-      }
-    }
-
-    if (name.includes('numSetsPer')) {
-      newWorkout.exercises.forEach((exercise, index) => {
-        while (exercise.sets.length < this.state.numSetsPer) {
-          const innerSet = emptySet;
-          //innerSet.exercise_id //this is going to be hard to identify when the exercise has not been added to the datebase yet
-          //time to simplify...
-          //
-          //
-          exercise.sets.push()
-        }
-      })
-    }
 
     this.setState({
       ...this.state,
-      numExercises,
-      numSetsPer,
-      workoutTitle,
-      workoutTime,
-      notes,
-      workoutDate,
-      currentWorkout: newWorkout
+      [event.target.name]: value
     });
+  }
+
+  getFromState = (key) => {
+    return this.state['key'];
   }
 
   renderDeleteButton = () => {
@@ -269,36 +95,55 @@ export default class WorkoutView extends React.Component {
           id="exercise-form"
           onSubmit={e => this.handleSubmit(e)}
         >
-          <WorkoutHeader
-            onChange={this.handleChange}
-            workout={this.state.currentWorkout}
-          />
-          <div>
-            <label htmlFor="numSetsPer">Sets</label>
+          <section className="workout-view-header">
+            <label htmlFor="workoutTitle"></label>
             <input
-              name="numSetsPer"
-              type="number"
-              className="workout-num-sets"
-              placeholder={this.getSetsCount()}
-              value={this.getSetsCount()}
+              name="workoutTitle"
+              type="text"
+              className="workout-view-title"
+              placeholder="Workout Title"
+              defaultValue={this.getFromState('title')}
               onChange={this.handleChange}
             />
-            <label htmlFor="numExercises">Exercises</label>
-            <input
-              name="numExercises"
-              type="number"
-              className="workout-num-exercises"
-              placeholder={this.getExerciseCount()}
-              value={this.getExerciseCount()}
-              onChange={this.handleChange}
-            />
-          </div>
-          <ExerciseTable
+            <div className="time-date-container">
+              <label htmlFor="workout_start_time">Start</label>
+              <input
+                name="workout_start_time"
+                type="time"
+                className="workout-view-time-date"
+                placeholder="time"
+                onChange={this.handleChange}
+                defaultValue={this.getFromState('workout_start_time')}
+              />
+              <label htmlFor="workout_end_time">End</label>
+              <input
+                name="workout_end_time"
+                type="time"
+                className="workout-view-time-date"
+                placeholder="time"
+                onChange={this.handleChange}
+                defaultValue={this.getFromState('workout_end_time')}
+              />
+              <label htmlFor="workoutDate"></label>
+              <input
+                name="workoutDate"
+                type="date"
+                className="workout-view-time-date"
+                placeholder="date"
+                onChange={this.handleChange}
+                value={this.getFromState('workout_date')}
+              />
+            </div>
+          </section>
+          <label htmlFor="exercises"></label>
+          <textarea
+            name="exercises"
+            id="exercises"
+            cols="30"
+            rows="50"
             onChange={this.handleChange}
-            sets={this.getSetsCount()}
-            exercises={this.getExerciseCount()}
-            workout={this.state.currentWorkout}
-          />
+            value={this.getFromState('ecercises')}
+          ></textarea>
           <section className="workout-view-footer">
             <div>
               <button
@@ -311,14 +156,6 @@ export default class WorkoutView extends React.Component {
                 ? this.renderDeleteButton()
                 : <></>}
             </div>
-            <textarea
-              name="notes"
-              id="notes"
-              cols="30"
-              rows="10"
-              onChange={this.handleChange}
-              value={this.getNotes()}
-            ></textarea>
           </section>
         </form>
       </div >
