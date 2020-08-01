@@ -1,0 +1,94 @@
+.workout-view{
+  padding-top: 6rem;
+  height: calc(100vh - 6rem);
+  border-left: solid 1px;
+  border-right: solid 1px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid 1px;
+  margin: 0 30px;
+  border-bottom: 0px;
+  height: calc(100vh - 6rem);
+  border-radius: 5% 5% 0 0;
+}
+
+.workout-view-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+.workout-view-title{
+  font-size: 22px;
+  text-align: center;
+  margin: 10px;
+}
+
+.workout-view-time-date{
+  font-size: 16px;
+  margin: 5px;
+  text-align: center;
+}
+
+.workout-view-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 15%;
+  margin: 20px;
+}
+
+.workout-view-back{
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+.time-date-container{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.workout-view-exercises{
+  width: 100%;
+  padding: 10px;
+}
+
+.exercise-table-container{
+  overflow: scroll;
+}
+
+.exercise-col{
+  width: 23%;
+}
+
+.set-col{
+  width: 11%;
+}
+
+.set-input{
+  font-size: 1rem;
+  text-align: center;
+  min-width: 4.5rem;
+  max-width: 4.5rem;
+}
+
+.exercise-input{
+  width: 86%;
+  font-size: 1.2rem;
+  padding: 0.5em;
+  min-width: 8rem;
+}

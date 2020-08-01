@@ -1,0 +1,50 @@
+.day{
+  display: block;
+  flex: 1 0 0%;
+  width: 14.28571%;
+  margin: 0;
+  padding: 0.8rem;
+  background: transparent;
+  border: 1px solid #dfe3e8;
+  border-radius: 0;
+  outline: none;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.day + .day,
+.day + .empty-state-day{
+  margin-left: -1px;
+}
+
+.day-selected{
+  background: #485eed;
+  border: 1px solid #485eed;
+  color: #fff;
+}
+
+.day-hovering{
+  background: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+.empty-state-day{
+  display: block;
+  flex: 1 0 0%;
+  width: calc(100% / 7);
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid #dfe3e8;
+}
+
+.empty-state-day + .empty-state-day,
+.empty-state-day + .day{
+  margin-left: -1px;
+}
+
+.dot{
+  font-size: 0.3em;
+  /* color: aqua; */
+}
+

@@ -1,0 +1,9 @@
+.weekday{
+  display: block;
+  flex: 1 0 0%;
+  padding: 0.8rem;
+  background: transparent;
+  font-size: 1.2rem;
+  color: #637381;
+  text-align: center;
+}

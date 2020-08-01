@@ -1,0 +1,66 @@
+.main-content{
+  padding-top: 6rem;
+  height: calc(100vh - 6rem);
+  border-left: solid 1px;
+  border-right: solid 1px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-preview{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: solid 1px;
+  margin: 0 30px;
+  border-bottom: 0px;
+  border-radius: 5% 5% 0 0;
+  height: 30%;
+}
+
+.note-preview-title{
+  margin: 10px;
+  width: 20%;
+  text-align: center;
+}
+
+.workout-preview-list{
+  width: 60%;
+  text-align: center;
+  margin-top: 0.65rem; /* likely need to remove this later */
+}
+
+.workout-preview-title-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.workout-preview-title{
+  font-size: 22px;
+  padding: 0;
+}
+
+.workout-preview-time{
+  font-size: 16px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+.workout-preview-description{
+  margin-top: 0;
+  font-size: 18px;
+  text-align: left;
+  color: grey;
+}
+
+.add-button{
+  margin: 10px;
+  width: 20%;
+  text-align: center;
+}

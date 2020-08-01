@@ -1,0 +1,40 @@
+.help-page{
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  height: calc(100vh - 6rem);
+}
+
+.help-container{
+  margin-top: 6rem;
+  border: solid 1px;
+  border-radius: 5%;
+}
+
+.help-page-title{
+  font-size: 3rem;
+  margin: 50px 50px 0 50px;
+  width: 70%;
+}
+
+.help-page-list{
+  font-size: 1.5rem;
+  margin: 5% 15%;
+  width: 55%;
+}
+
+.help-page-list li{
+  margin: 20% 0;
+}
+
+.help-page-footer{
+  text-align: right;
+}
+
+.help-page-next-button{
+  margin: 0px 50px 50px 50px;
+  padding: 20px;
+}
