@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import WorkoutsApiService from '../../../services/workouts-api-service';
 import { IoIosTrash, IoMdCreate } from "react-icons/io";
-import Context from '../../../MainContext';
 
 export default function WorkoutSummary(props) {
-
-  const context = useContext(Context);
 
   function handleDeleteClick() {
     WorkoutsApiService.deleteWorkout(props.workoutId);

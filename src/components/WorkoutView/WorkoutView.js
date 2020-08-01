@@ -30,13 +30,19 @@ export default class WorkoutView extends React.Component {
         })
     } else {
       this.setState({
-        date: this.setDate(this.context.selectedDate)
-      })
+        workout_date: this.extractDate(this.context.selectedDate),
+        workout_start_time: this.extractTime(new Date()),
+        workout_end_time: this.extractTime(new Date())
+      });
     }
   }
 
-  setDate = (workout_date) => {
-    this.setState({ workout_date });
+  extractDate = (date) => {
+    return date.toISOString().slice(0, 10);
+  }
+
+  extractTime = (date) => {
+    return String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
   }
 
   handleSubmit = (event) => {
@@ -74,7 +80,7 @@ export default class WorkoutView extends React.Component {
   }
 
   getFromState = (key) => {
-    return this.state['key'];
+    return this.state[key];
   }
 
   renderDeleteButton = () => {
@@ -96,9 +102,9 @@ export default class WorkoutView extends React.Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <section className="workout-view-header">
-            <label htmlFor="workoutTitle"></label>
+            <label htmlFor="title"></label>
             <input
-              name="workoutTitle"
+              name="title"
               type="text"
               className="workout-view-title"
               placeholder="Workout Title"
@@ -111,25 +117,22 @@ export default class WorkoutView extends React.Component {
                 name="workout_start_time"
                 type="time"
                 className="workout-view-time-date"
-                placeholder="time"
                 onChange={this.handleChange}
-                defaultValue={this.getFromState('workout_start_time')}
+                value={this.getFromState('workout_start_time')}
               />
               <label htmlFor="workout_end_time">End</label>
               <input
                 name="workout_end_time"
                 type="time"
                 className="workout-view-time-date"
-                placeholder="time"
                 onChange={this.handleChange}
-                defaultValue={this.getFromState('workout_end_time')}
+                value={this.getFromState('workout_end_time')}
               />
-              <label htmlFor="workoutDate"></label>
+              <label htmlFor="workout_date"></label>
               <input
-                name="workoutDate"
+                name="workout_date"
                 type="date"
                 className="workout-view-time-date"
-                placeholder="date"
                 onChange={this.handleChange}
                 value={this.getFromState('workout_date')}
               />
