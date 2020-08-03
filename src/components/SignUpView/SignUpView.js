@@ -22,7 +22,7 @@ export default class SignUpView extends React.Component {
         password.value = "";
         email.value = "";
         this.context.handleRegisteredState(true);
-        // this.handleLoginAfterRegister(username.value, password.value)
+        this.handleLoginAfterRegister(username.value, password.value)
       })
       .catch((res) => {
         console.log(res.error)
@@ -31,17 +31,18 @@ export default class SignUpView extends React.Component {
   };
 
   handleLoginAfterRegister = (username, password) => {
-    AuthApiService.postLogin({
-      username,
-      password,
-    })
-      .then((res) => {
-        TokenService.saveAuthToken(res.authToken);
-        this.props.history.push("/");
-      })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
+    this.props.history.push("/login");
+    // AuthApiService.postLogin({
+    //   username,
+    //   password,
+    // })
+    //   .then((res) => {
+    //     TokenService.saveAuthToken(res.authToken);
+    //     this.props.history.push("/");
+    //   })
+    //   .catch((res) => {
+    //     this.context.handleSetError(res.error);
+    //   });
   };
 
   render() {

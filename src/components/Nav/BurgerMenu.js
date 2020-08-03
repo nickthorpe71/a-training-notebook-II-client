@@ -26,21 +26,30 @@ export default function BurgerMenu(props) {
     TokenService.clearUserId();
     context.handleLoginState(false);
     context.handleRegisteredState(false);
+    context.handleSetError(null);
   };
 
-
+  function resetErrors() {
+    context.handleSetError(null);
+  }
 
   function renderLoginLink() {
     return (
       <div className='Header__not-logged-in'>
-        <Link
-          to='/login'>
-          Log in
-        </Link>
-        <Link
-          to='/signup'>
-          Sign up
-        </Link>
+        <div>
+          <Link
+            onClick={resetErrors}
+            to='/login'>
+            Log in
+          </Link>
+        </div>
+        <div>
+          <Link
+            onClick={resetErrors}
+            to='/signup'>
+            Sign up
+          </Link>
+        </div>
       </div>
     )
   }
@@ -48,6 +57,7 @@ export default function BurgerMenu(props) {
   return (
     <Menu {...props}>
       <Link
+        onClick={handleLogoutClick}
         to='/'>
         Home
       </Link>
@@ -57,6 +67,7 @@ export default function BurgerMenu(props) {
         : renderLoginLink()}
 
       <Link
+        onClick={resetErrors}
         to='/help'>
         Help
       </Link>
