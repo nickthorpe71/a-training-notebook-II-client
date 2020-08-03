@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import MainView from '../../components/MainView/MainView';
 import WorkoutView from '../../components/WorkoutView/WorkoutView';
 import SignUpView from '../../components/SignUpView/SignUpView';

@@ -34,30 +34,32 @@ export default function LoginView(props) {
   };
 
   return (
-    <form onSubmit={handleSubmitJwtAuth}>
-      <div className="login-form">
-        <h1>Log in</h1>
-        {context.error && <p className="error">{context.error}</p>}
-        <section className="form-section">
-          <label className="input-title" htmlFor="username"><b>Username</b></label>
-          <input className="underline-input" type="text" name="username" required />
-        </section>
-        <section className="form-section">
-          <label className="input-title" htmlFor="password"><b>Password</b></label>
-          <input className="underline-input" type="password" name="password" required />
-        </section>
-        <section>
-          <button type="submit" className="lit-button">Login</button>
-          <Link to='/landing'>
-            <button
-              type="button"
-              className="unlit-button"
-            >Cancel
+    <div className="login-bg">
+      <form onSubmit={handleSubmitJwtAuth}>
+        <div className="login-form">
+          <h1>Log in</h1>
+          {context.error && <p className="error">{context.error}</p>}
+          <section className="form-section">
+            <label className="input-title" htmlFor="username"><b>Username</b></label>
+            <input className="underline-input" type="text" name="username" required />
+          </section>
+          <section className="form-section">
+            <label className="input-title" htmlFor="password"><b>Password</b></label>
+            <input className="underline-input" type="password" name="password" required />
+          </section>
+          <section>
+            <button type="submit" className="lit-button">Login</button>
+            <Link to='/landing'>
+              <button
+                type="button"
+                className="unlit-button"
+              >Cancel
             </button>
-          </Link>
-        </section>
-      </div>
-    </form>
+            </Link>
+          </section>
+        </div>
+      </form>
+    </div>
   );
 }
 

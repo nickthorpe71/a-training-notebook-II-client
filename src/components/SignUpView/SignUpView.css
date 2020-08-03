@@ -6,3 +6,9 @@
   margin: 0 auto;
   width: 40%;
 }
+
+.signup-bg{
+  background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+}

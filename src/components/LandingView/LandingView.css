@@ -9,9 +9,16 @@
   text-align: center;
 }
 
+.landing-bg{
+    background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
+    background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
+    background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+}
+
 .landing-page h1{
   font-size: 4rem;
   margin-bottom : 2rem;
+  color: #343434;
 }
 .landing-page p{
   font-size: 1.5rem;
@@ -22,3 +29,4 @@
 .landing-button{
   font-size: 2rem;
 }
+

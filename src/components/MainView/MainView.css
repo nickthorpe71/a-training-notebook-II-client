@@ -1,8 +1,10 @@
 .main-content{
+  background: #072739;
+  background: -webkit-linear-gradient(to right, #0f374d, #001D36);
+  background:    -moz-linear-gradient(to right, #0f374d, #001D36);
+  background:         linear-gradient(to right, #0f374d, #001D36);
   padding-top: 6rem;
   height: calc(100vh - 6rem);
-  border-left: solid 1px;
-  border-right: solid 1px;
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -12,12 +14,13 @@
 }
 
 .note-preview{
+  background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:         linear-gradient(to right, #FFFFFF, #DEDECD);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: solid 1px;
   margin: 0 30px;
-  border-bottom: 0px;
   border-radius: 5% 5% 0 0;
   height: 30%;
 }
