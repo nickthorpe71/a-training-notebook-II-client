@@ -12,26 +12,23 @@ export default function LoginView(props) {
   function handleSubmitJwtAuth(event) {
     event.preventDefault();
 
-    const { email, password } = event.target;
-
-    console.log(email.value, password.value);
+    const { username, password } = event.target;
 
     AuthApiService.postLogin({
-      email: email.value,
+      username: username.value,
       password: password.value,
     })
       .then((res) => {
-        console.log(res);
-        email.value = "";
+        username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         TokenService.saveUserId(res.user_id);
-        context.saveUserInfo(res.username, res.email);
+        // context.saveUserInfo(res.username, res.email);
         context.handleLoginState(true);
         props.history.push("/");
       })
       .catch((res) => {
-        // context(res.error);
+        console.log(res.error);
       });
   };
 
@@ -40,8 +37,8 @@ export default function LoginView(props) {
       <div className="login-form">
         <h1>Log in</h1>
         <section className="form-section">
-          <label className="input-title" htmlFor="email"><b>Email</b></label>
-          <input className="underline-input" type="text" name="email" required />
+          <label className="input-title" htmlFor="username"><b>Username</b></label>
+          <input className="underline-input" type="text" name="username" required />
         </section>
         <section className="form-section">
           <label className="input-title" htmlFor="password"><b>Password</b></label>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HelpView.css';
 
 export default function HelpView(props) {
@@ -21,7 +22,9 @@ export default function HelpView(props) {
           </li>
         </ol>
         <div class="help-page-footer">
-          <button class="help-page-next-button">continue</button>
+          <Link to='/'>
+            <button class="help-page-next-button">continue</button>
+          </Link>
         </div>
       </div>
     </div>
