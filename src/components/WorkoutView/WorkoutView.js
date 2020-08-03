@@ -147,19 +147,22 @@ export default class WorkoutView extends React.Component {
               />
             </div>
           </section>
-          <label htmlFor="exercises"></label>
-          <textarea
-            name="exercises"
-            id="exercises"
-            cols="30"
-            rows="50"
-            onChange={this.handleChange}
-            value={this.getFromState('exercises')}
-          ></textarea>
+          <div>
+            <label htmlFor="exercises"></label>
+            <textarea
+              className="exercise-area"
+              name="exercises"
+              id="exercises"
+              cols="80"
+              rows="12"
+              onChange={this.handleChange}
+              value={this.getFromState('exercises')}
+            ></textarea>
+          </div>
           <section className="workout-view-footer">
             <div>
               <button
-                className="workout-view-back"
+                className="workout-view-back unlit-button"
                 onClick={this.handlieBackButton}
               >back
               </button>

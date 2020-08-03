@@ -16,11 +16,14 @@
 }
 
 .landing-page h1{
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 4rem;
   margin-bottom : 2rem;
   color: #343434;
 }
 .landing-page p{
+  font-family: 'Comfortaa', cursive;
+  color: #343434;
   font-size: 1.5rem;
   margin-top : 0;
   margin-bottom : 2rem;

@@ -26,27 +26,45 @@
 }
 
 .note-preview-title{
-  margin: 10px;
+  color: #26282b;
+  margin: 0.5rem;
   width: 20%;
   text-align: center;
+  font-size: 1.1rem;
 }
 
 .workout-preview-list{
+  color: #26282b;
   width: 60%;
   text-align: center;
   margin-top: 0.65rem; /* likely need to remove this later */
 }
 
 .workout-preview-title-container{
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 0;
 }
 
+.workout-preview-title-container a{
+  text-decoration: none;
+  color: #727982;
+}
+
+.workout-preview-title-container a:hover{
+  color: #26282b;
+}
+
+.workout-preview-title-container a:active{
+  color: #3d67a5;
+}
+
 .workout-preview-title{
-  font-size: 22px;
+  font-size: 1.5rem;
   padding: 0;
+
 }
 
 .workout-preview-time{
@@ -67,3 +85,4 @@
   width: 20%;
   text-align: center;
 }
+

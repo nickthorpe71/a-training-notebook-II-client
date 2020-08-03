@@ -39,7 +39,7 @@ body {
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: #727982;
 }
 
 /* Position and sizing of clickable cross button */
@@ -55,6 +55,7 @@ body {
 
 /* General sidebar styles */
 .bm-menu {
+  font-family: 'Hind Guntur', sans-serif;
   background: #001D36;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;

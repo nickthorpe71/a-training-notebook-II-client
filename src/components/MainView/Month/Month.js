@@ -35,7 +35,7 @@ export default class Month extends React.Component {
           const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0')
           dateDots[workoutDay] = <Icon color={'aqua'} icon={circleFill} />
         }
-        for (let i = 1; i < 31; i++) {
+        for (let i = 1; i <= 31; i++) {
           const iKey = String(i).padStart(2, '0');
           if (!(iKey in dateDots)) {
             dateDots[iKey] = <Icon color={'white'} icon={circleFill} />;

@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Hind+Guntur:wght@300&family=Source+Sans+Pro:wght@300&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Hind Guntur', sans-serif, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,4 +30,17 @@ ul{
 
 .error{
   color: firebrick;
+  font-family: 'Hind Guntur', sans-serif;
+}
+
+input{
+  font-size: 1rem;
+  background: transparent;
+  font-family: 'Hind Guntur', sans-serif;
+}
+
+textarea {
+  font-size: 1rem;
+  background: transparent;
+  font-family: 'Hind Guntur', sans-serif;
 }

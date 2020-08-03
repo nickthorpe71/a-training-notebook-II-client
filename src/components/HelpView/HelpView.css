@@ -15,12 +15,14 @@
 }
 
 .help-page-title{
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 3rem;
   margin: 50px 50px 0 50px;
   width: 70%;
 }
 
 .help-page-list{
+  font-family: 'Hind Guntur', sans-serif;
   font-size: 1.5rem;
   margin: 5% 15%;
   width: 55%;

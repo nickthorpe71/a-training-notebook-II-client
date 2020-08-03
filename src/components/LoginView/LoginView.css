@@ -1,10 +1,16 @@
 .login-form{
+  color: #343434;
+  font-family: 'Hind Guntur', sans-serif;
   padding-top: 6rem;
   height: calc(100vh - 6rem);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 40%;
+}
+
+.login-form h1{
+  font-family: 'Hind Guntur', sans-serif;
 }
 
 .login-bg{

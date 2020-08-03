@@ -1,4 +1,6 @@
 .sign-up-form{
+  font-family: 'Hind Guntur', sans-serif;
+  color: #343434;
   padding-top: 6rem;
   height: calc(100vh - 6rem);
   display: flex;

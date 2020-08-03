@@ -17,7 +17,7 @@ export default function DayPreview(props) {
   day[5] = "Fri";
   day[6] = "Sat";
 
-  const todaysDate = `${context.selectedDate.getMonth() + 1}/${context.selectedDate.getDate()}`
+  const todaysDate = ` ${context.selectedDate.getMonth() + 1}/${context.selectedDate.getDate()}`
   const displayDate = day[context.selectedDate.getDay()];
 
   function renderWorkouts() {
@@ -33,8 +33,8 @@ export default function DayPreview(props) {
   return (
     <section className="note-preview">
       <div className="note-preview-title">
-        <h3>{displayDate}</h3>
-        <h3>{todaysDate}</h3>
+        <h3>{displayDate}
+          {todaysDate}</h3>
       </div>
       <ul className="workout-preview-list">
         {renderWorkouts()}
