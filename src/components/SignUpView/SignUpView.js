@@ -8,11 +8,6 @@ import { Link } from 'react-router-dom';
 export default class SignUpView extends React.Component {
   static contextType = MainContext;
 
-  state = {
-    error: null,
-    loading: false,
-  };
-
   handleRegisterSubmit = (e) => {
     e.preventDefault();
     const { username, password, email } = e.target;
@@ -31,7 +26,7 @@ export default class SignUpView extends React.Component {
       })
       .catch((res) => {
         console.log(res.error)
-        this.setState({ error: res.error });
+        this.context.handleSetError(res.error);
       });
   };
 
@@ -67,6 +62,7 @@ export default class SignUpView extends React.Component {
             <label className="input-title" htmlFor="password"><b>Password</b></label>
             <input className="underline-input" type="password" name="password" required />
           </section>
+          {this.context.error && <p className="error">{this.context.error}</p>}
           {/* <section className="form-section">
             <label className="input-title" htmlFor="password-repeat"><b>Confirm</b></label>
             <input className="underline-input" type="password" name="password-repeat" required />

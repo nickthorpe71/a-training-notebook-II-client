@@ -29,6 +29,7 @@ export default function LoginView(props) {
       })
       .catch((res) => {
         console.log(res.error);
+        context.handleSetError(res.error);
       });
   };
 
@@ -36,6 +37,7 @@ export default function LoginView(props) {
     <form onSubmit={handleSubmitJwtAuth}>
       <div className="login-form">
         <h1>Log in</h1>
+        {context.error && <p className="error">{context.error}</p>}
         <section className="form-section">
           <label className="input-title" htmlFor="username"><b>Username</b></label>
           <input className="underline-input" type="text" name="username" required />

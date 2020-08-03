@@ -68,6 +68,7 @@ export class MainProvider extends Component {
       selectedDate: this.state.selectedDate,
       matchingWorkouts: this.state.matchingWorkouts,
       editing: this.state.matchingWorkouts,
+      handleSetError: this.handleSetError,
       handleDayClick: this.handleDayClick,
       handleLoginState: this.handleLoginState,
       handleRegisteredState: this.handleRegisteredState,

@@ -7,6 +7,8 @@ import LoginView from '../../components/LoginView/LoginView';
 import LandingView from '../../components/LandingView/LandingView';
 import HelpView from '../../components/HelpView/HelpView';
 import BurgerMenu from '../../components/Nav/BurgerMenu';
+import PrivateRoute from '../../Utils/PrivateRoute';
+import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
 import './App.css';
 
 class App extends Component {
@@ -28,26 +30,26 @@ class App extends Component {
         </header>
         <main className="view">
           {this.state.hasError && <p className='red'>There was an error!</p>}
-          <Route
+          <PrivateRoute
             exact
             path="/"
             component={MainView} />
-          <Route
+          <PublicOnlyRoute
             exact
             path="/signup"
             component={SignUpView} />
-          <Route
+          <PublicOnlyRoute
             exact
             path="/login"
             component={LoginView} />
-          <Route
+          <PrivateRoute
             path="/workout/:workoutId"
             component={WorkoutView} />
-          <Route
+          <PublicOnlyRoute
             exact
             path="/landing"
             component={LandingView} />
-          <Route
+          <PrivateRoute
             exact
             path="/help"
             component={HelpView} />
