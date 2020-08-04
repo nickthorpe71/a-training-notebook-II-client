@@ -36,10 +36,12 @@
 }
 
 .workout-view-title{
+  width: 50%;
   font-size: 1.6rem;
   text-align: center;
+  text-overflow: ellipsis;
   margin: 1rem;
-  color: #727982;
+  color: #26282b;
 }
 
 .workout-view-time-date{

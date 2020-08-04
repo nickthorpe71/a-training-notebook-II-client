@@ -38,7 +38,7 @@ export default class Month extends React.Component {
         for (let i = 1; i <= 31; i++) {
           const iKey = String(i).padStart(2, '0');
           if (!(iKey in dateDots)) {
-            dateDots[iKey] = <Icon color={'white'} icon={circleFill} />;
+            dateDots[iKey] = <Icon color={'transparent'} icon={circleFill} />;
           }
         }
 

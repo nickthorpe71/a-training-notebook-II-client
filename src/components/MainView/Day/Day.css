@@ -1,11 +1,12 @@
 .day{
+  color: #dfe3e8;
   display: block;
   flex: 1 0 0%;
   width: 14.28571%;
   margin: 0;
   padding: 0.8rem;
   background: transparent;
-  border: 1px solid #dfe3e8;
+  border: 2.1px solid transparent;
   border-radius: 0;
   outline: none;
   font-size: 1.2rem;
@@ -19,14 +20,16 @@
 }
 
 .day-selected{
-  background: #485eed;
-  border: 1px solid #485eed;
+  background: transparent;
+  border: 2.1px solid #65a0d3;
   color: #fff;
 }
 
 .day-hovering{
-  background: #f2f2f2;
-  border: 1px solid #f2f2f2;
+  cursor: default;
+  background: transparent;
+  border: 2.1px solid #4E667B;
+  color: #fff;
 }
 
 .empty-state-day{
@@ -35,7 +38,7 @@
   width: calc(100% / 7);
   margin: 0;
   padding: 0.8rem;
-  border: 1px solid #dfe3e8;
+  border: 0px solid #dfe3e8;
 }
 
 .empty-state-day + .empty-state-day,
@@ -45,6 +48,5 @@
 
 .dot{
   font-size: 0.3em;
-  /* color: aqua; */
 }
 

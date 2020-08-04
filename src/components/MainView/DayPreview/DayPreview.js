@@ -33,15 +33,15 @@ export default function DayPreview(props) {
   return (
     <section className="note-preview">
       <div className="note-preview-title">
-        <h3>{displayDate}
-          {todaysDate}</h3>
+        <p>{displayDate}
+          {todaysDate}</p>
       </div>
       <ul className="workout-preview-list">
         {renderWorkouts()}
       </ul>
-      <div className="add-button">
+      <div className="add-button-container">
         <Link to='/workout/new'>
-          <button className="lit-button"><IoIosAddCircleOutline></IoIosAddCircleOutline></button>
+          <button className="add-button"><IoIosAddCircleOutline></IoIosAddCircleOutline></button>
         </Link>
       </div>
     </section>

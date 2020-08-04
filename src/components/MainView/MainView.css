@@ -5,7 +5,7 @@
   background:         linear-gradient(to right, #0f374d, #001D36);
   padding-top: 6rem;
   height: calc(100vh - 6rem);
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -27,21 +27,20 @@
 
 .note-preview-title{
   color: #26282b;
-  margin: 0.5rem;
-  width: 20%;
+  margin: 0.3rem;
+  width: 23%;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .workout-preview-list{
   color: #26282b;
-  width: 60%;
   text-align: center;
-  margin-top: 0.65rem; /* likely need to remove this later */
+  width: 58%;
+  margin-top: 2rem;
 }
 
 .workout-preview-title-container{
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,11 +49,11 @@
 
 .workout-preview-title-container a{
   text-decoration: none;
-  color: #727982;
+  color: #26282b;
 }
 
 .workout-preview-title-container a:hover{
-  color: #26282b;
+  color: #156c9f;
 }
 
 .workout-preview-title-container a:active{
@@ -63,8 +62,21 @@
 
 .workout-preview-title{
   font-size: 1.5rem;
-  padding: 0;
+  margin-block-start: 0;
+  margin-block-end:0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
 
+.workout-preview-title-container button{
+  border: 0;
+  background-color: transparent;
+  padding: auto;
+  font-size: 1.4rem;
+}
+
+.workout-preview-item{
+  justify-content: space-between;
 }
 
 .workout-preview-time{
@@ -77,12 +89,42 @@
   margin-top: 0;
   font-size: 18px;
   text-align: left;
-  color: grey;
+  color: #26282b;
 }
 
-.add-button{
-  margin: 10px;
-  width: 20%;
-  text-align: center;
+.add-button-container {
+  display: flex;
+  justify-content: center;
+  width: 23%;
+}
+
+.add-button {
+  margin-top: 1rem;
+  border: 0;
+  background-color: transparent;
+  font-size: 3.5rem;
+  color: #26282b;
+}
+
+.add-button:hover{
+  color: #156c9f;
+}
+
+.edit-button:hover{
+  display: flex;
+  flex-direction: row;
+  color: forestgreen;
+}
+
+.delete-button:hover{
+  display: flex;
+  flex-direction: row;
+  color: firebrick;
+}
+
+.change-buttons{
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
 }
 

@@ -44,3 +44,7 @@ textarea {
   background: transparent;
   font-family: 'Hind Guntur', sans-serif;
 }
+
+button{
+  cursor: pointer;
+}

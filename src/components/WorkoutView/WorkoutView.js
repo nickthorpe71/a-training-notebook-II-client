@@ -116,7 +116,7 @@ export default class WorkoutView extends React.Component {
               name="title"
               type="text"
               className="workout-view-title"
-              placeholder="Workout Title"
+              placeholder="Title"
               defaultValue={this.getFromState('title')}
               onChange={this.handleChange}
             />
@@ -161,12 +161,12 @@ export default class WorkoutView extends React.Component {
           </div>
           <section className="workout-view-footer">
             <div>
+              <button className="lit-button">save</button>
               <button
                 className="workout-view-back unlit-button"
                 onClick={this.handlieBackButton}
               >back
               </button>
-              <button className="lit-button">save</button>
               {this.props.match.params.workoutId !== 'new'
                 ? this.renderDeleteButton()
                 : <></>}

@@ -23,7 +23,7 @@ export default function HelpView(props) {
         </ol>
         <div class="help-page-footer">
           <Link to='/'>
-            <button class="help-page-next-button">continue</button>
+            <button class="help-page-next-button lit-button">continue</button>
           </Link>
         </div>
       </div>

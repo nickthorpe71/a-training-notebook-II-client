@@ -1,6 +1,6 @@
 .help-page{
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 38rem;
+  margin: 0rem auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,8 +9,11 @@
 }
 
 .help-container{
+  color: #343434;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:         linear-gradient(to right, #FFFFFF, #DEDECD);
   margin-top: 6rem;
-  border: solid 1px;
   border-radius: 5%;
 }
 
@@ -25,7 +28,7 @@
   font-family: 'Hind Guntur', sans-serif;
   font-size: 1.5rem;
   margin: 5% 15%;
-  width: 55%;
+  width: 70%;
 }
 
 .help-page-list li{
@@ -34,9 +37,15 @@
 
 .help-page-footer{
   text-align: right;
+  margin: 1rem;
 }
+
+.help-page li{
+  margin: 2rem;
+} 
 
 .help-page-next-button{
   margin: 0px 50px 50px 50px;
   padding: 20px;
 }
+
