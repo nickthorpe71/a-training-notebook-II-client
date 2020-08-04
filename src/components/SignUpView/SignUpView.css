@@ -1,16 +1,22 @@
+.register-form{
+  max-height: calc(100% - 6rem);
+} 
+
 .sign-up-form{
   font-family: 'Hind Guntur', sans-serif;
   color: #343434;
-  padding-top: 6rem;
-  height: calc(100vh - 6rem);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 40%;
+  max-height: calc(100% - 6rem);
 }
 
 .signup-bg{
+  overflow: scroll;
   background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+  padding-top: 6rem;
+  max-height: calc(100% - 6rem);
 }
