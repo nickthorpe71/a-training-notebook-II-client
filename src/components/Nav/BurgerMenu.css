@@ -25,6 +25,10 @@ body {
   transition: color 0.2s;
 }
 
+.remove-margin{
+  margin-bottom: 0px;
+}
+
 .bm-item:hover {
   color: white;
 }

@@ -61,7 +61,6 @@ export default class WorkoutView extends React.Component {
       WorkoutsApiService.postWorkout(this.state);
     } else {
       console.log('we are editing a workout')
-      console.log(this.state.id)
       WorkoutsApiService.updateWorkout(this.state.id, this.state);
     }
 
@@ -70,8 +69,10 @@ export default class WorkoutView extends React.Component {
 
   handleDeleteClick = (event) => {
     event.preventDefault();
-    WorkoutsApiService.deleteWorkout(this.state.id);
-    this.props.history.push('/');
+    WorkoutsApiService.deleteWorkout(this.state.id)
+      .then(() => {
+        this.props.history.push('/');
+      });
   }
 
   handleBackButton = () => {
@@ -161,7 +162,7 @@ export default class WorkoutView extends React.Component {
           </div>
           <section className="workout-view-footer">
             <div>
-              <button className="lit-button">save</button>
+              <button type="submit" className="lit-button">save</button>
               <button
                 className="workout-view-back unlit-button"
                 onClick={this.handlieBackButton}

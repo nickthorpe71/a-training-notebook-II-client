@@ -6,8 +6,10 @@ import { IoIosTrash, IoMdCreate } from "react-icons/io";
 export default function WorkoutSummary(props) {
 
   function handleDeleteClick() {
-    WorkoutsApiService.deleteWorkout(props.workoutId);
-    window.location.reload(true);
+    WorkoutsApiService.deleteWorkout(props.workoutId)
+      .then(() => {
+        window.location.reload(true);
+      });
   }
 
   return (

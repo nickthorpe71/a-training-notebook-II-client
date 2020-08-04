@@ -39,6 +39,10 @@ input{
   font-family: 'Hind Guntur', sans-serif;
 }
 
+input:focus{
+  background: transparent;
+}
+
 textarea {
   font-size: 1rem;
   background: transparent;

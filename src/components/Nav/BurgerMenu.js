@@ -13,6 +13,7 @@ export default function BurgerMenu(props) {
     return (
       <div className='Header__logged-in'>
         <Link
+          className='bm-item'
           onClick={handleLogoutClick}
           to='/landing'>
           Logout
@@ -35,9 +36,10 @@ export default function BurgerMenu(props) {
 
   function renderLoginLink() {
     return (
-      <div className='Header__not-logged-in'>
+      <div className='Header__not-logged-in remove-margin'>
         <div>
           <Link
+            className='bm-item'
             onClick={resetErrors}
             to='/login'>
             Log in
@@ -45,6 +47,7 @@ export default function BurgerMenu(props) {
         </div>
         <div>
           <Link
+            className='bm-item'
             onClick={resetErrors}
             to='/signup'>
             Sign up
