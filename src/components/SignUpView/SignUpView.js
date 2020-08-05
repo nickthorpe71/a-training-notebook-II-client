@@ -11,6 +11,7 @@ export default class SignUpView extends React.Component {
     e.preventDefault();
     const { username, password, email } = e.target;
 
+    this.context.setLoading(true);
     AuthApiService.postUser({
       username: username.value,
       password: password.value,
@@ -21,7 +22,8 @@ export default class SignUpView extends React.Component {
         password.value = "";
         email.value = "";
         this.context.handleRegisteredState(true);
-        this.handleLoginAfterRegister(username.value, password.value)
+        this.context.setLoading(false);
+        this.handleLoginAfterRegister(username.value, password.value);
       })
       .catch((res) => {
         console.log(res.error)

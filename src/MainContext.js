@@ -16,7 +16,12 @@ export class MainProvider extends Component {
     selectedDate: new Date(),
     matchingWorkouts: [],
     editing: false,
+    loading: false
   };
+
+  setLoading = (loading) => {
+    this.setState({ loading });
+  }
 
   handleSetError = (error) => {
     this.setState({ error });
@@ -55,8 +60,31 @@ export class MainProvider extends Component {
           selectedDate: newFullDate,
           matchingWorkouts: res,
           editing: true,
+          loading: false
         });
       })
+  }
+
+  renderLoading = () => {
+    return (
+      <div className="loading-container">
+        <h1 className="loading-text">one moment...</h1>
+        <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+    )
+  }
+
+  renderMain = (value) => {
+    return (
+      < MainContext.Provider value={value} >
+        {this.props.children}
+      </MainContext.Provider >
+    )
+  }
+
+  checkIfLoading = () => {
+    return this.state.loading;
   }
 
   render() {
@@ -68,6 +96,7 @@ export class MainProvider extends Component {
       selectedDate: this.state.selectedDate,
       matchingWorkouts: this.state.matchingWorkouts,
       editing: this.state.matchingWorkouts,
+      setLoading: this.setLoading,
       handleSetError: this.handleSetError,
       handleDayClick: this.handleDayClick,
       handleLoginState: this.handleLoginState,
@@ -75,9 +104,13 @@ export class MainProvider extends Component {
       saveUserInfo: this.saveUserInfo,
     };
     return (
-      <MainContext.Provider value={value}>
-        {this.props.children}
-      </MainContext.Provider>
+      <div>
+        {
+          this.checkIfLoading()
+            ? this.renderLoading()
+            : this.renderMain(value)
+        }
+      </div>
     );
   }
 }

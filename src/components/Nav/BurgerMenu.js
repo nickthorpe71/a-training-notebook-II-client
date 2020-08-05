@@ -8,7 +8,7 @@ import './BurgerMenu.css';
 export default function BurgerMenu(props) {
 
   const context = useContext(Context);
-  const [isOpen, setCount] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   function renderLogoutLink() {
     return (
@@ -24,7 +24,7 @@ export default function BurgerMenu(props) {
   }
 
   function closeMenu() {
-    setCount(isOpen + 1)
+    setIsOpen(isOpen)
   }
 
   function handleLogoutClick() {

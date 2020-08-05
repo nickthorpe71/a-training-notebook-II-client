@@ -14,6 +14,7 @@ export default function LoginView(props) {
 
     const { username, password } = event.target;
 
+    context.setLoading(true);
     AuthApiService.postLogin({
       username: username.value,
       password: password.value,
@@ -25,6 +26,7 @@ export default function LoginView(props) {
         TokenService.saveUserId(res.user_id);
         // context.saveUserInfo(res.username, res.email);
         context.handleLoginState(true);
+        context.setLoading(false);
         props.history.push("/");
       })
       .catch((res) => {

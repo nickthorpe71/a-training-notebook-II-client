@@ -20,6 +20,7 @@ export default class WorkoutView extends React.Component {
   static contextType = Context;
 
   componentDidMount = () => {
+
     if (this.props.match.params.workoutId !== 'new') {
       const workout_id = this.props.match.params.workoutId;
       WorkoutsApiService.getWorkoutById(workout_id)
