@@ -1,21 +1,62 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import Context from '../../MainContext';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import TokenService from '../../services/token-service'
 import './BurgerMenu.css';
 
-export default function BurgerMenu(props) {
+export default class BurgerMenu extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isMyMenuOpen: false
+    };
+  }
 
-  const context = useContext(Context);
-  const [isOpen, setIsOpen] = useState(false);
+  static contextType = Context;
 
-  function renderLogoutLink() {
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside);
+  }
+  componentWillUnmount() {
+    document.addEventListener('click', this.handleClickOutside);
+  }
+
+  handleClickOutside = e => {
+    if (this.state.isMyMenuOpen === false) {
+      return;
+    }
+    const node = ReactDOM.findDOMNode(this);
+    let target = e.target;
+
+    while (target && target.parentNode) {
+      if (target === node) {
+        return;
+      }
+
+      target = target.parentNode;
+    }
+
+    this.setState({ isMyMenuOpen: false });
+  };
+
+  isMenuOpen = state => {
+    console.log('state', state);
+    if (state.isOpen === this.state.isMyMenuOpen) return;
+    this.setState({ isMyMenuOpen: state.isOpen });
+  };
+
+  closeMenu = () => {
+    this.setState({ isMyMenuOpen: false });
+  }
+
+  renderLogoutLink = () => {
     return (
       <div className='Header__logged-in remove-margin'>
         <Link
           className='bm-item'
-          onClick={handleLogoutClick}
+          onClick={this.handleLogoutClick}
           to='/landing'>
           Logout
         </Link>
@@ -23,31 +64,27 @@ export default function BurgerMenu(props) {
     )
   }
 
-  function closeMenu() {
-    setIsOpen(isOpen)
-  }
-
-  function handleLogoutClick() {
+  handleLogoutClick = () => {
     TokenService.clearAuthToken();
     TokenService.clearUserId();
-    context.handleLoginState(false);
-    context.handleRegisteredState(false);
-    context.handleSetError(null);
-    closeMenu();
+    this.context.handleLoginState(false);
+    this.context.handleRegisteredState(false);
+    this.context.handleSetError(null);
+    this.closeMenu();
   };
 
-  function resetErrors() {
-    context.handleSetError(null);
-    closeMenu();
+  resetErrors = () => {
+    this.context.handleSetError(null);
+    this.closeMenu();
   }
 
-  function renderLoginLink() {
+  renderLoginLink = () => {
     return (
       <div className='Header__not-logged-in remove-margin'>
         <div>
           <Link
             className='bm-item'
-            onClick={resetErrors}
+            onClick={this.resetErrors}
             to='/login'>
             Log in
           </Link>
@@ -55,7 +92,7 @@ export default function BurgerMenu(props) {
         <div>
           <Link
             className='bm-item'
-            onClick={resetErrors}
+            onClick={this.resetErrors}
             to='/signup'>
             Sign up
           </Link>
@@ -63,27 +100,32 @@ export default function BurgerMenu(props) {
       </div>
     )
   }
+  render() {
+    return (
+      <Menu
+        // {...this.props}
+        isOpen={this.state.isMyMenuOpen}
+        onStateChange={this.isMenuOpen}
+        right
+        width={'45%'}
+      >
+        <Link
+          onClick={this.closeMenu}
+          to='/'>
+          Home
+        </Link>
 
-  return (
-    <Menu
-      {...props}
-      isOpen={isOpen}
-    >
-      <Link
-        onClick={closeMenu}
-        to='/'>
-        Home
-      </Link>
+        {TokenService.hasAuthToken()
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
 
-      {TokenService.hasAuthToken()
-        ? renderLogoutLink()
-        : renderLoginLink()}
+        <Link
+          onClick={this.resetErrors}
+          to='/help'>
+          Help
+        </Link>
+      </Menu>
+    );
+  }
 
-      <Link
-        onClick={resetErrors}
-        to='/help'>
-        Help
-      </Link>
-    </Menu>
-  );
 };
