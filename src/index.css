@@ -15,10 +15,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    background: #091827;
-    background: -webkit-linear-gradient(to right, #0f374d, #001D36);
-    background:    -moz-linear-gradient(to right, #0f374d, #001D36);
-    background:         linear-gradient(to right, #0f374d, #001D36);
+  background: #091827;
+  background: -webkit-linear-gradient(to right, #0f374d, #001D36);
+  background:    -moz-linear-gradient(to right, #0f374d, #001D36);
+  background:         linear-gradient(to right, #0f374d, #001D36);
 }
 
 code {
