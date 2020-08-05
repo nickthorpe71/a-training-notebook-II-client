@@ -59,20 +59,32 @@ export default class WorkoutView extends React.Component {
 
     if (this.props.match.params.workoutId === 'new') {
       console.log('we are posting a new workout')
-      WorkoutsApiService.postWorkout(this.state);
+      this.context.setLoading(true);
+      WorkoutsApiService.postWorkout(this.state)
+        .then(() => {
+          this.props.history.push('/');
+          this.context.setLoading(false);
+        })
     } else {
       console.log('we are editing a workout')
-      WorkoutsApiService.updateWorkout(this.state.id, this.state);
+      this.context.setLoading(true);
+      WorkoutsApiService.updateWorkout(this.state.id, this.state)
+        .then(() => {
+          this.props.history.push('/');
+          this.context.setLoading(false);
+        })
     }
 
-    this.props.history.push('/');
+
   }
 
   handleDeleteClick = (event) => {
     event.preventDefault();
+    this.context.setLoading(true);
     WorkoutsApiService.deleteWorkout(this.state.id)
       .then(() => {
         this.props.history.push('/');
+        this.context.setLoading(false);
       });
   }
 

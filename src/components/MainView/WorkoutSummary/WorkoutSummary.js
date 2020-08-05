@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../../../MainContext';
 import { Link } from 'react-router-dom'
 import WorkoutsApiService from '../../../services/workouts-api-service';
 import { IoIosTrash, IoMdCreate } from "react-icons/io";
 
 export default function WorkoutSummary(props) {
+  const context = useContext(Context);
 
   function handleDeleteClick() {
+
+    context.setLoading(true);
     WorkoutsApiService.deleteWorkout(props.workoutId)
       .then(() => {
+        context.setLoading(false);
         window.location.reload(true);
       });
   }
