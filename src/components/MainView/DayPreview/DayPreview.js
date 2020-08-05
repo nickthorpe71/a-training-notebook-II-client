@@ -26,6 +26,7 @@ export default function DayPreview(props) {
       <WorkoutSummary
         key={index}
         workoutTitle={workout.title}
+        exercises={workout.exercises}
         workoutId={workout.id} />
     );
   }

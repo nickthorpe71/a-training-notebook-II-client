@@ -36,7 +36,7 @@ export default function WorkoutSummary(props) {
           </div>
         </div>
       </div>
-      <p className="workout-preview-description"></p>
+      <p className="workout-preview-description">{props.exercises}</p>
     </li >
   );
 }

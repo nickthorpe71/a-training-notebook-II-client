@@ -45,7 +45,7 @@
 .workout-preview-title-container{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 0;
 }
 
@@ -74,6 +74,16 @@
   max-height: 2em;
 }
 
+.workout-preview-description{
+  margin: 0;
+  font-size: 0.9em;
+  text-align: left;
+  color: #4f5052;
+  text-overflow: ellipsis;
+  max-height: 3rem;
+  overflow: hidden;
+}
+
 .workout-preview-title-container button{
   border: 0;
   background-color: transparent;
@@ -83,19 +93,6 @@
 
 .workout-preview-item{
   justify-content: space-between;
-}
-
-.workout-preview-time{
-  font-size: 16px;
-  margin-bottom: 0px;
-  padding: 0;
-}
-
-.workout-preview-description{
-  margin-top: 0;
-  font-size: 18px;
-  text-align: left;
-  color: #26282b;
 }
 
 .right-container {
