@@ -148,14 +148,12 @@ export default class WorkoutView extends React.Component {
               />
             </div>
           </section>
-          <div>
+          <div className="exercise-area-container">
             <label htmlFor="exercises"></label>
             <textarea
               className="exercise-area"
               name="exercises"
               id="exercises"
-              cols="80"
-              rows="12"
               onChange={this.handleChange}
               value={this.getFromState('exercises')}
             ></textarea>

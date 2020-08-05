@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Hind+Guntur:wght@300&family=Source+Sans+Pro:wght@300&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+
 body {
   margin: 0;
   font-family: 'Hind Guntur', sans-serif, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,7 +24,7 @@ code {
 }
 
 main{
-  height: calc(100% + 6rem);
+  height: 100vh;
 }
 
 ul{

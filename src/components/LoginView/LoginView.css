@@ -12,10 +12,11 @@
 }
 
 .login-bg{
+  overflow: auto;
   background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+  margin-top: -6rem;
   padding-top: 6rem;
-  height: calc(100% - 6rem);
-  overflow: scroll;
+  height: 100%;
 }

@@ -9,14 +9,15 @@
   flex-direction: column;
   margin: 0 auto;
   width: 40%;
-  max-height: calc(100% - 6rem);
+  height: 100%;
 }
 
 .signup-bg{
-  overflow: scroll;
+  overflow: auto;
   background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
   background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+  margin-top: -6rem;
   padding-top: 6rem;
-  max-height: calc(100% - 6rem);
+  height: 100%;
 }
