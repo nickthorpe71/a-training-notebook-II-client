@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+a:focus, input:focus, button:focus, select:focus {
+  border: #2482bd 2.1px solid;
+}
 
 body {
   margin: 0;
