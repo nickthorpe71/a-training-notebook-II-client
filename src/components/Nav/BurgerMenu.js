@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Context from '../../MainContext';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
@@ -8,6 +8,7 @@ import './BurgerMenu.css';
 export default function BurgerMenu(props) {
 
   const context = useContext(Context);
+  const [isOpen, setCount] = useState(0);
 
   function renderLogoutLink() {
     return (
@@ -22,16 +23,22 @@ export default function BurgerMenu(props) {
     )
   }
 
+  function closeMenu() {
+    setCount(isOpen + 1)
+  }
+
   function handleLogoutClick() {
     TokenService.clearAuthToken();
     TokenService.clearUserId();
     context.handleLoginState(false);
     context.handleRegisteredState(false);
     context.handleSetError(null);
+    closeMenu();
   };
 
   function resetErrors() {
     context.handleSetError(null);
+    closeMenu();
   }
 
   function renderLoginLink() {
@@ -58,8 +65,12 @@ export default function BurgerMenu(props) {
   }
 
   return (
-    <Menu {...props}>
+    <Menu
+      {...props}
+      isOpen={isOpen}
+    >
       <Link
+        onClick={closeMenu}
         to='/'>
         Home
       </Link>
