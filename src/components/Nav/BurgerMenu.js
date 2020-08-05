@@ -11,7 +11,7 @@ export default function BurgerMenu(props) {
 
   function renderLogoutLink() {
     return (
-      <div className='Header__logged-in'>
+      <div className='Header__logged-in remove-margin'>
         <Link
           className='bm-item'
           onClick={handleLogoutClick}
@@ -60,7 +60,6 @@ export default function BurgerMenu(props) {
   return (
     <Menu {...props}>
       <Link
-        onClick={handleLogoutClick}
         to='/'>
         Home
       </Link>

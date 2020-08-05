@@ -32,17 +32,17 @@ export default function DayPreview(props) {
 
   return (
     <section className="note-preview">
-      <div className="note-preview-title">
+      <div className="date-container">
         <p>{displayDate}
           {todaysDate}</p>
       </div>
-      <ul className="workout-preview-list">
-        {renderWorkouts()}
-      </ul>
-      <div className="add-button-container">
+      <div className="right-container">
         <Link to='/workout/new'>
           <button className="add-button"><IoIosAddCircleOutline></IoIosAddCircleOutline></button>
         </Link>
+        <ul className="workout-preview-list">
+          {renderWorkouts()}
+        </ul>
       </div>
     </section>
   );

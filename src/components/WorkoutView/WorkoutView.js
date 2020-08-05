@@ -122,6 +122,14 @@ export default class WorkoutView extends React.Component {
               onChange={this.handleChange}
             />
             <div className="time-date-container">
+              <label htmlFor="workout_date"></label>
+              <input
+                name="workout_date"
+                type="date"
+                className="workout-view-time-date"
+                onChange={this.handleChange}
+                value={this.getFromState('workout_date')}
+              />
               <label htmlFor="workout_start_time">Start</label>
               <input
                 name="workout_start_time"
@@ -137,14 +145,6 @@ export default class WorkoutView extends React.Component {
                 className="workout-view-time-date"
                 onChange={this.handleChange}
                 value={this.getFromState('workout_end_time')}
-              />
-              <label htmlFor="workout_date"></label>
-              <input
-                name="workout_date"
-                type="date"
-                className="workout-view-time-date"
-                onChange={this.handleChange}
-                value={this.getFromState('workout_date')}
               />
             </div>
           </section>

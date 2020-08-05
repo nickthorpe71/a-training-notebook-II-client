@@ -8,6 +8,10 @@
   height: 100%;
 }
 
+.help-page button{
+  border-radius: 5%;
+}
+
 .help-container{
   color: #343434;
   background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
