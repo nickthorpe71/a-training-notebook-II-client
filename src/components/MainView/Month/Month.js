@@ -18,7 +18,6 @@ export default class Month extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    console.log('component did mount')
     this.context.determineWorkoutDots();
   }
 

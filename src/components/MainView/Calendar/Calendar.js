@@ -14,12 +14,27 @@ export default class Calendar extends Component {
 
   changeMonth = (direction) => {
     const newMonth = this.context.selectedDate.getMonth() + direction;
+    const newFullDate = new Date(
+      this.context.selectedDate.getFullYear(),
+      newMonth,
+      1
+    );
+    this.context.changeSelectedDate(newFullDate);
+
     this.context.changeSelectedMonth(newMonth);
   }
 
   changeYear = (direction) => {
-    const newMonth = this.context.selectedDate.getFullYear() + direction;
-    this.context.changeSelectedYear(newMonth)
+    const newYear = this.context.selectedDate.getFullYear() + direction;
+    const newFullDate = new Date(
+      newYear,
+      this.context.selectedDate.getMonth(),
+      1
+    );
+
+    this.context.changeSelectedDate(newFullDate);
+
+    this.context.changeSelectedYear(newYear)
   }
 
   render() {

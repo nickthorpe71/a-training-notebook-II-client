@@ -31,12 +31,7 @@ export class MainProvider extends Component {
       selectedDate.getDate()
     );
 
-    // this.setState({
-    //   selectedDate: newFullDate,
-    //   loading: false
-    // })
-
-    this.determineWorkoutDotsCall()
+    this.determineWorkoutDotsCall(newFullDate.getMonth() + 1, newYear)
       .then(dateDots => {
         this.setState({
           dateDots,
@@ -63,6 +58,21 @@ export class MainProvider extends Component {
           loading: false
         })
       });
+  }
+
+  changeSelectedDate = (date) => {
+
+    const searchDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+
+    WorkoutsApiService.getWorkoutsByDate(searchDate)
+      .then((res) => {
+        this.setState({
+          selectedDate: date,
+          matchingWorkouts: res,
+          editing: true,
+          loading: false
+        });
+      })
   }
 
   setLoading = (loading) => {
@@ -102,7 +112,6 @@ export class MainProvider extends Component {
 
     WorkoutsApiService.getWorkoutsByDate(searchDate)
       .then((res) => {
-        console.log(res, 'get by date day')
         this.setState({
           selectedDate: newFullDate,
           matchingWorkouts: res,
@@ -143,7 +152,6 @@ export class MainProvider extends Component {
           return
         }
 
-        console.log(res, 'this is by month')
         let count = res.length;
         for (let i = 0; i < count; i++) {
           const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0')
@@ -155,7 +163,6 @@ export class MainProvider extends Component {
             dateDots[iKey] = <Icon color={'transparent'} icon={circleFill} />;
           }
         }
-        console.log(searchMonth, searchYear);
         return dateDots;
       });
   }
@@ -179,6 +186,7 @@ export class MainProvider extends Component {
       matchingWorkouts: this.state.matchingWorkouts,
       editing: this.state.matchingWorkouts,
       dateDots: this.state.dateDots,
+      changeSelectedDate: this.changeSelectedDate,
       determineWorkoutDots: this.determineWorkoutDots,
       changeSelectedMonth: this.changeSelectedMonth,
       changeSelectedYear: this.changeSelectedYear,
