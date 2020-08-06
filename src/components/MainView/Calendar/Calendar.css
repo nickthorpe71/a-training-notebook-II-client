@@ -12,7 +12,24 @@
   margin-bottom: 2rem;
 }
 
+
 .calendar-container-title{
   font-size: 1.7rem;
   color: #dfdfd2;
+  margin: 0 7.5vw;
+}
+
+.calendar-header{
+  display: flex;
+  flex-direction: row;
+  color: #dfdfd2;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-header-button{
+  color: #dfdfd2;
+  background: transparent;
+  border: 0px;
+  font-size: 2rem;
 }

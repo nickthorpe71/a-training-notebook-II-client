@@ -21,7 +21,7 @@ export default function DayPreview(props) {
   const displayDate = day[context.selectedDate.getDay()];
 
   function renderWorkouts() {
-    const { matchingWorkouts = [] } = context;
+    const { matchingWorkouts } = context;
     return matchingWorkouts.map((workout, index) =>
       <WorkoutSummary
         key={index}

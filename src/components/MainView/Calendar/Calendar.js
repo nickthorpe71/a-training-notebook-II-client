@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Context from '../../../MainContext';
+import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import Month from '../Month/Month.js';
 import './Calendar.css'
 
@@ -11,22 +12,32 @@ export default class Calendar extends Component {
     this.context.handleDayClick(date);
   }
 
+  changeMonth = (direction) => {
+    const newMonth = this.context.selectedDate.getMonth() + direction;
+    this.context.changeSelectedMonth(newMonth);
+  }
+
+  changeYear = (direction) => {
+    const newMonth = this.context.selectedDate.getFullYear() + direction;
+    this.context.changeSelectedYear(newMonth)
+  }
+
   render() {
     const { selectedDate } = this.context;
 
     const months = [
-      "January",
-      "February",
-      "March",
-      "April",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
       "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"];
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"];
 
     const dateNumber = selectedDate.getDate();
     const monthNumber = selectedDate.getMonth();
@@ -39,7 +50,29 @@ export default class Calendar extends Component {
 
     return (
       <div className="calendar-container">
-        <h2 className="calendar-container-title"> {monthName} </h2>
+        <div className="calendar-header">
+          <button
+            className="calendar-header-button"
+            onClick={() => this.changeYear(-1)}>
+            <FaAngleDoubleLeft></FaAngleDoubleLeft>
+          </button>
+          <button
+            className="calendar-header-button"
+            onClick={() => this.changeMonth(-1)}>
+            <FaAngleLeft></FaAngleLeft>
+          </button>
+          <h2 className="calendar-container-title"> {`${monthName} ${yearNumber}`} </h2>
+          <button
+            className="calendar-header-button"
+            onClick={() => this.changeMonth(1)}>
+            <FaAngleRight></FaAngleRight>
+          </button>
+          <button
+            className="calendar-header-button"
+            onClick={() => this.changeYear(1)}>
+            <FaAngleDoubleRight></FaAngleDoubleRight>
+          </button>
+        </div>
         <div className="SomeMonth">
           <Month
             date={dateNumber}

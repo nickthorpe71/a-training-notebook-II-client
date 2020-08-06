@@ -16,9 +16,10 @@ const WorkoutsApiService = {
       )
   },
 
-  getWorkoutsByMonth(month) {
+  getWorkoutsByMonth(month, year) {
     const userId = Number(TokenService.getUserId());
-    return fetch(`${config.API_ENDPOINT}/workouts/${userId}?month=${month}`, {
+    console.log(`${config.API_ENDPOINT}/workouts/${userId}?month=${month}&year=${year}`);
+    return fetch(`${config.API_ENDPOINT}/workouts/${userId}?month=${month}&year=${year}`, {
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       }

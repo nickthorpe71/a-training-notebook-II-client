@@ -1,11 +1,9 @@
 import React from 'react';
 import Weekday from '../Weekday/Weekday'
-import WorkoutsApiService from '../../../services/workouts-api-service';
 import Day from '../Day/Day'
 import Context from '../../../MainContext';
 import './Month.css'
-import { Icon } from '@iconify/react';
-import circleFill from '@iconify/icons-bi/circle-fill';
+
 
 export default class Month extends React.Component {
   constructor(props) {
@@ -20,30 +18,8 @@ export default class Month extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    this.determineWorkoutDots();
-  }
-
-  determineWorkoutDots = () => {
-    const searchMonth = this.context.selectedDate.getMonth() + 1;
-
-    let dateDots = {}
-
-    WorkoutsApiService.getWorkoutsByMonth(searchMonth)
-      .then(res => {
-        let count = res.length;
-        for (let i = 0; i < count; i++) {
-          const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0')
-          dateDots[workoutDay] = <Icon color={'aqua'} icon={circleFill} />
-        }
-        for (let i = 1; i <= 31; i++) {
-          const iKey = String(i).padStart(2, '0');
-          if (!(iKey in dateDots)) {
-            dateDots[iKey] = <Icon color={'transparent'} icon={circleFill} />;
-          }
-        }
-
-        this.setState({ dateDots });
-      });
+    console.log('component did mount')
+    this.context.determineWorkoutDots();
   }
 
   render() {

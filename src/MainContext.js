@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TokenService from './services/token-service';
 import WorkoutsApiService from './services/workouts-api-service';
+import { Icon } from '@iconify/react';
+import circleFill from '@iconify/icons-bi/circle-fill';
 
 const MainContext = React.createContext({})
 
@@ -16,8 +18,52 @@ export class MainProvider extends Component {
     selectedDate: new Date(),
     matchingWorkouts: [],
     editing: false,
-    loading: false
+    loading: false,
+    dateDots: {}
   };
+
+  changeSelectedYear = (newYear) => {
+    const { selectedDate } = this.state;
+
+    const newFullDate = new Date(
+      newYear,
+      selectedDate.getMonth(),
+      selectedDate.getDate()
+    );
+
+    // this.setState({
+    //   selectedDate: newFullDate,
+    //   loading: false
+    // })
+
+    this.determineWorkoutDotsCall()
+      .then(dateDots => {
+        this.setState({
+          dateDots,
+          selectedDate: newFullDate,
+          loading: false
+        })
+      });
+  }
+
+  changeSelectedMonth = (newMonth) => {
+    const { selectedDate } = this.state;
+
+    const newFullDate = new Date(
+      selectedDate.getFullYear(),
+      newMonth,
+      selectedDate.getDate()
+    );
+
+    this.determineWorkoutDotsCall(newFullDate.getMonth() + 1, selectedDate.getFullYear())
+      .then(dateDots => {
+        this.setState({
+          dateDots,
+          selectedDate: newFullDate,
+          loading: false
+        })
+      });
+  }
 
   setLoading = (loading) => {
     this.setState({ loading });
@@ -48,7 +94,7 @@ export class MainProvider extends Component {
 
     const newFullDate = new Date(
       selectedDate.getFullYear(),
-      selectedDate.getMonth(), //this will need to change to desired month if we want to allow month navigation
+      selectedDate.getMonth(),
       newDay
     );
 
@@ -56,6 +102,7 @@ export class MainProvider extends Component {
 
     WorkoutsApiService.getWorkoutsByDate(searchDate)
       .then((res) => {
+        console.log(res, 'get by date day')
         this.setState({
           selectedDate: newFullDate,
           matchingWorkouts: res,
@@ -71,7 +118,6 @@ export class MainProvider extends Component {
         <h1 className="loading-text">one moment...</h1>
         <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
-
     )
   }
 
@@ -87,6 +133,42 @@ export class MainProvider extends Component {
     return this.state.loading;
   }
 
+  determineWorkoutDotsCall = (searchMonth, searchYear) => {
+    let dateDots = {}
+
+    return WorkoutsApiService.getWorkoutsByMonth(String(searchMonth).padStart(2, '0'), searchYear)
+      .then(res => {
+        if (!res) {
+          console.log(res);
+          return
+        }
+
+        console.log(res, 'this is by month')
+        let count = res.length;
+        for (let i = 0; i < count; i++) {
+          const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0')
+          dateDots[workoutDay] = <Icon color={'aqua'} icon={circleFill} />
+        }
+        for (let i = 1; i <= 31; i++) {
+          const iKey = String(i).padStart(2, '0');
+          if (!(iKey in dateDots)) {
+            dateDots[iKey] = <Icon color={'transparent'} icon={circleFill} />;
+          }
+        }
+        console.log(searchMonth, searchYear);
+        return dateDots;
+      });
+  }
+
+  determineWorkoutDots = () => {
+    const searchMonth = this.state.selectedDate.getMonth() + 1;
+    const searchYear = this.state.selectedDate.getFullYear();
+
+    this.determineWorkoutDotsCall(searchMonth, searchYear).then(dateDots => {
+      this.setState({ dateDots })
+    });
+  }
+
   render() {
     const value = {
       username: this.state.username,
@@ -96,6 +178,10 @@ export class MainProvider extends Component {
       selectedDate: this.state.selectedDate,
       matchingWorkouts: this.state.matchingWorkouts,
       editing: this.state.matchingWorkouts,
+      dateDots: this.state.dateDots,
+      determineWorkoutDots: this.determineWorkoutDots,
+      changeSelectedMonth: this.changeSelectedMonth,
+      changeSelectedYear: this.changeSelectedYear,
       setLoading: this.setLoading,
       handleSetError: this.handleSetError,
       handleDayClick: this.handleDayClick,
