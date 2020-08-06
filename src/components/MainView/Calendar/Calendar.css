@@ -16,7 +16,8 @@
 .calendar-container-title{
   font-size: 1.4rem;
   color: #dfdfd2;
-  margin: 0 2rem;
+  margin: 0 2vw;
+  line-height: 1.8rem;
 }
 
 .calendar-header{
@@ -28,8 +29,22 @@
 }
 
 .calendar-header-button{
+  margin: 0 -0.3rem;
   color: #dfdfd2;
   background: transparent;
   border: 0px;
   font-size: 2rem;
+}
+
+@media screen and (min-width: 30rem) {
+  .calendar-header-button{
+    margin: 0 1rem;
+  }
+
+  .calendar-container-title{
+    font-size: 2rem;
+    color: #dfdfd2;
+    margin: 0 3vw;
+    line-height: initial;
+  }
 }

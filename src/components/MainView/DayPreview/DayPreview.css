@@ -1,0 +1,59 @@
+.note-preview{
+  background: -webkit-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:    -moz-linear-gradient(to right, #FFFFFF, #DEDECD);
+  background:         linear-gradient(to right, #FFFFFF, #DEDECD);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 30px;
+  border-radius: 10% 10% 0 0;
+  height: 30%;
+}
+
+.date-container{
+  color: #26282b;
+  margin: 0.4rem 1rem 1rem 1rem;
+  width: 7%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.workout-preview-list{
+  color: #26282b;
+  justify-content: space-between;
+  width: 93%;
+  overflow: auto;
+}
+
+.right-container {
+  display: flex;
+  justify-content: right;
+  align-content: flex-end;
+  width: 93%;
+  flex-direction: column;
+}
+
+.right-container a {
+  text-align: right;
+}
+
+.add-button {
+  margin: 0;
+  padding: 0;
+  margin: 0.5rem 0.5rem 0 0;
+  border: 0;
+  height: fit-content;
+  background-color: transparent;
+  font-size: 3.5rem;
+  color: #26282b;
+}
+
+.add-button:hover{
+  color: #156c9f;
+}
+
+@media screen and (min-width: 30rem) {
+  .right-container{
+    flex-direction: row-reverse;
+  }
+}

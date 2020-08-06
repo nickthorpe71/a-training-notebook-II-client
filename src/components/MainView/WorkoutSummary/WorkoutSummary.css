@@ -1,0 +1,90 @@
+
+.workout-preview-title-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.workout-preview-title-container a{
+  text-decoration: none;
+  color: #26282b;
+  overflow-x: hidden;
+}
+
+.workout-preview-title-container a:hover{
+  color: #156c9f;
+}
+
+.workout-preview-title-container a:active{
+  color: #3d67a5;
+}
+
+.workout-preview-title{
+  font-size: 1.6em;
+  margin-block-start: 0;
+  margin-block-end:0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 2em;
+}
+
+.workout-preview-description{
+  margin: 0;
+  font-size: 0.9em;
+  text-align: left;
+  color: #4f5052;
+  text-overflow: ellipsis;
+  max-height: 3rem;
+  overflow: hidden;
+}
+
+.workout-preview-title-container button{
+  border: 0;
+  background-color: transparent;
+  padding: auto;
+  font-size: 1.4rem;
+}
+
+.workout-preview-item{
+  justify-content: space-between;
+}
+
+.edit-button{
+  margin: 0;
+  padding: 0;
+}
+
+.delete-button{
+  margin: 0;
+  padding: 0;
+  margin: 0 0 0 0.4em;
+}
+
+.edit-button:hover{
+  display: flex;
+  flex-direction: row;
+  color: forestgreen;
+}
+
+.delete-button:hover{
+  display: flex;
+  flex-direction: row;
+  color: firebrick;
+}
+
+.change-buttons{
+  margin: 0;
+  padding: 0;
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 30rem) {
+  .workout-preview-title-container{
+    margin-top: 2rem;
+  }
+}
