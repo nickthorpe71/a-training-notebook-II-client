@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import BurgerMenu from './BurgerMenu';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<BurgerMenu />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <BurgerMenu />
       </BrowserRouter>,
     )
   })

@@ -3,6 +3,7 @@ import Context from '../../../MainContext';
 import { Link } from 'react-router-dom'
 import WorkoutsApiService from '../../../services/workouts-api-service';
 import { IoIosTrash, IoMdCreate } from "react-icons/io";
+import './WorkoutSummary.css'
 
 
 export default function WorkoutSummary(props) {

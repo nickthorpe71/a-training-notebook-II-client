@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Context from '../../../MainContext';
 import WorkoutSummary from '../WorkoutSummary/WorkoutSummary'
 import { IoIosAddCircleOutline } from "react-icons/io";
+import './DayPreview.css'
 
 export default function DayPreview(props) {
 

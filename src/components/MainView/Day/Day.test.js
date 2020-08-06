@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import Day from './Day';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<Day />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <Day />
       </BrowserRouter>,
     )
   })

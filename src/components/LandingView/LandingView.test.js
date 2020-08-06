@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import LandingView from './LandingView';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<LandingView />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <LandingView />
       </BrowserRouter>,
     )
   })

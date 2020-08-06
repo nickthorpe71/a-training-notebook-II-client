@@ -148,7 +148,6 @@ export class MainProvider extends Component {
     return WorkoutsApiService.getWorkoutsByMonth(String(searchMonth).padStart(2, '0'), searchYear)
       .then(res => {
         if (!res) {
-          console.log(res);
           return
         }
 

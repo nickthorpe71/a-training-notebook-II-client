@@ -26,7 +26,6 @@ export default class SignUpView extends React.Component {
         this.handleLoginAfterRegister(username.value, password.value);
       })
       .catch((res) => {
-        console.log(res.error)
         this.context.handleSetError(res.error);
       });
   };

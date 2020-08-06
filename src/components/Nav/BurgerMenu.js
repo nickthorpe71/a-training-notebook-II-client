@@ -42,7 +42,6 @@ export default class BurgerMenu extends React.Component {
   };
 
   isMenuOpen = state => {
-    console.log('state', state);
     if (state.isOpen === this.state.isMyMenuOpen) return;
     this.setState({ isMyMenuOpen: state.isOpen });
   };

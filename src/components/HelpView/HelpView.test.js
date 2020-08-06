@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import HelpView from './HelpView';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<HelpView />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <HelpView />
       </BrowserRouter>,
     )
   })

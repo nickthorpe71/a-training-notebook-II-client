@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import WorkoutSummary from './WorkoutSummary';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<WorkoutSummary />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <WorkoutSummary />
       </BrowserRouter>,
     )
   })

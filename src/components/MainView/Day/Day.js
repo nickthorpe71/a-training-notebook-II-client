@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import Context from '../../../MainContext';
-
 import './Day.css'
 
 export default function Day(props) {
@@ -11,10 +10,6 @@ export default function Day(props) {
   }
 
   const date = props.fullDate.getDate();
-  // const month = props.fullDate.getMonth();
-  // const year = props.fullDate.getFullYear();
-  // const yearAndMonth = `${year}-${String(month + 1).padStart(2, '0')}`;
-  // console.log(yearAndMonth);
   let className = 'day';
 
   if (props.selected) {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import LoginView from './LoginView';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<LoginView />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <LoginView />
       </BrowserRouter>,
     )
   })

@@ -30,7 +30,6 @@ export default function LoginView(props) {
         props.history.push("/");
       })
       .catch((res) => {
-        console.log(res.error);
         context.handleSetError(res.error);
       });
   };

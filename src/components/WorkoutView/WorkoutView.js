@@ -46,7 +46,7 @@ export default class WorkoutView extends React.Component {
 
   }
 
-  extractDate = (date) => {
+  extractDate = (date = new Date()) => {
     return date.toISOString().slice(0, 10);
   }
 
@@ -58,7 +58,6 @@ export default class WorkoutView extends React.Component {
     event.preventDefault();
 
     if (this.props.match.params.workoutId === 'new') {
-      console.log('we are posting a new workout')
       this.context.setLoading(true);
       WorkoutsApiService.postWorkout(this.state)
         .then(() => {
@@ -66,7 +65,6 @@ export default class WorkoutView extends React.Component {
           this.context.setLoading(false);
         })
     } else {
-      console.log('we are editing a workout')
       this.context.setLoading(true);
       WorkoutsApiService.updateWorkout(this.state.id, this.state)
         .then(() => {

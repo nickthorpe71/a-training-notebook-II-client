@@ -4,11 +4,11 @@ import './HelpView.css';
 
 export default function HelpView(props) {
   return (
-    <div class="help-page">
-      <div class="help-container">
-        <h2 class="help-page-title">How to use a training notebook</h2>
-        <ol class="help-page-list">
-          <li class="help-page-list">
+    <div className="help-page">
+      <div className="help-container">
+        <h2 className="help-page-title">How to use a training notebook</h2>
+        <ol className="help-page-list">
+          <li className="help-page-list">
             <p>select which day you are recording a workout to</p>
           </li>
           <li>
@@ -21,9 +21,9 @@ export default function HelpView(props) {
             <p>We will take care of the rest!</p>
           </li>
         </ol>
-        <div class="help-page-footer">
+        <div className="help-page-footer">
           <Link to='/'>
-            <button class="help-page-next-button lit-button">continue</button>
+            <button className="help-page-next-button lit-button">continue</button>
           </Link>
         </div>
       </div>

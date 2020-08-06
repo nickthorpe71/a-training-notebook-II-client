@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import Weekday from './Weekday';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<Weekday />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <Weekday />
       </BrowserRouter>,
     )
   })

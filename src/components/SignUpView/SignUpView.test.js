@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import SignUpView from './SignUpView';
 import { mount } from 'enzyme';
 
-describe('<App />', () => {
+describe('<SignUpView />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <App />
+        <SignUpView />
       </BrowserRouter>,
     )
   })
