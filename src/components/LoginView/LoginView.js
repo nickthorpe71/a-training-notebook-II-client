@@ -24,13 +24,13 @@ export default function LoginView(props) {
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         TokenService.saveUserId(res.user_id);
-        // context.saveUserInfo(res.username, res.email);
         context.handleLoginState(true);
         context.setLoading(false);
         props.history.push("/");
       })
       .catch((res) => {
         context.handleSetError(res.error);
+        context.setLoading(false);
       });
   };
 

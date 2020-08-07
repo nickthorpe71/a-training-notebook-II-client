@@ -98,7 +98,6 @@ export default class Month extends React.Component {
 
 }
 
-//returns only the first three letters of the weekday title
 function weekdayAbbreviation(weekday) {
   return weekday.substring(0, 2);
 }

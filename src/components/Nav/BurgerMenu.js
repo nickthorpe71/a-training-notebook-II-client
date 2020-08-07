@@ -102,7 +102,6 @@ export default class BurgerMenu extends React.Component {
   render() {
     return (
       <Menu
-        // {...this.props}
         isOpen={this.state.isMyMenuOpen}
         onStateChange={this.isMenuOpen}
         right

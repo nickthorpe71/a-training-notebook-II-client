@@ -27,22 +27,12 @@ export default class SignUpView extends React.Component {
       })
       .catch((res) => {
         this.context.handleSetError(res.error);
+        this.context.setLoading(false);
       });
   };
 
   handleLoginAfterRegister = (username, password) => {
     this.props.history.push("/login");
-    // AuthApiService.postLogin({
-    //   username,
-    //   password,
-    // })
-    //   .then((res) => {
-    //     TokenService.saveAuthToken(res.authToken);
-    //     this.props.history.push("/");
-    //   })
-    //   .catch((res) => {
-    //     this.context.handleSetError(res.error);
-    //   });
   };
 
   render() {
@@ -65,10 +55,6 @@ export default class SignUpView extends React.Component {
               <input className="underline-input" type="password" name="password" required />
             </section>
             {this.context.error && <p className="error">{this.context.error}</p>}
-            {/* <section className="form-section">
-            <label className="input-title" htmlFor="password-repeat"><b>Confirm</b></label>
-            <input className="underline-input" type="password" name="password-repeat" required />
-          </section> */}
             <p>By creating an account you agree to our <a href="https://app.termly.io/document/privacy-policy/f476937d-b4d9-4a9a-802d-31e0c1100d24">Terms Privacy</a>.</p>
             <section>
               <Link to='/landing'>
