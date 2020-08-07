@@ -8,7 +8,6 @@ https://github.com/nickthorpe71/a-training-notebook-II-server/blob/master/API_Do
 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/57202558/89674122-39453480-d8ad-11ea-8387-14ad56d96fe7.png)
-![image](https://user-images.githubusercontent.com/57202558/89674212-672a7900-d8ad-11ea-9034-4552cc736f0b.png)
 ![image](https://user-images.githubusercontent.com/57202558/89674246-74476800-d8ad-11ea-884b-d35780b964ac.png)
 ![image](https://user-images.githubusercontent.com/57202558/89674310-8923fb80-d8ad-11ea-9f4a-db3d90ce3061.png)
 
