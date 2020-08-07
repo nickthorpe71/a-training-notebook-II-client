@@ -1,4 +1,4 @@
-# a training notebook 
+# A Training Notebook 
 
 ## Link to the live app
 https://atrainingnotebook.vercel.app/
