@@ -18,6 +18,9 @@ export default class SignUpView extends React.Component {
       email: email.value,
     })
       .then((user) => {
+        console.log(username.value)
+        console.log(password.value)
+        console.log(email.value)
         username.value = "";
         password.value = "";
         email.value = "";

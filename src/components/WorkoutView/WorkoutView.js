@@ -174,7 +174,7 @@ export default class WorkoutView extends React.Component {
               <button type="submit" className="lit-button">save</button>
               <button
                 className="workout-view-back unlit-button"
-                onClick={this.handlieBackButton}
+                onClick={this.handleBackButton}
               >back
               </button>
               {this.props.match.params.workoutId !== 'new'

@@ -61,7 +61,6 @@ export class MainProvider extends Component {
   }
 
   changeSelectedDate = (date) => {
-
     const searchDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
     WorkoutsApiService.getWorkoutsByDate(searchDate)
@@ -80,7 +79,7 @@ export class MainProvider extends Component {
   }
 
   handleSetError = (error) => {
-    this.setState({ error });
+    this.setState({ error, loading: false });
   }
 
   saveUserInfo = (username, email) => {

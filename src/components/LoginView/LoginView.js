@@ -13,6 +13,8 @@ export default function LoginView(props) {
     event.preventDefault();
 
     const { username, password } = event.target;
+    console.log(username.value)
+    console.log(password.value)
 
     context.setLoading(true);
     AuthApiService.postLogin({
@@ -20,6 +22,8 @@ export default function LoginView(props) {
       password: password.value,
     })
       .then((res) => {
+        console.log(username.value)
+        console.log(password.value)
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
