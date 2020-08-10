@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Context from '../../../MainContext';
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router";
 import WorkoutsApiService from '../../../services/workouts-api-service';
 import { IoIosTrash, IoMdCreate } from "react-icons/io";
 import './WorkoutSummary.css';
@@ -8,6 +9,7 @@ import './WorkoutSummary.css';
 
 export default function WorkoutSummary(props) {
   const context = useContext(Context);
+  const history = useHistory();
 
   function handleDeleteClick() {
 
@@ -15,7 +17,7 @@ export default function WorkoutSummary(props) {
     WorkoutsApiService.deleteWorkout(props.workoutId)
       .then(() => {
         context.setLoading(false);
-        window.location.reload(true);
+        history.push('/');
       });
   }
 
