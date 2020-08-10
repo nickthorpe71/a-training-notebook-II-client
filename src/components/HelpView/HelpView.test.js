@@ -9,6 +9,6 @@ describe('<HelpView />', () => {
       <BrowserRouter>
         <HelpView />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

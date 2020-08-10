@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Calendar from './Calendar';
 import { mount } from 'enzyme';
-import MainContext from '../../../MainContext'
+import MainContext from '../../../MainContext';
 
 beforeEach(() => {
   jest.resetModules();
@@ -32,13 +32,13 @@ describe('<Calendar />', () => {
       handleLoginState: () => { },
       handleRegisteredState: () => { },
       saveUserInfo: () => { },
-    }
+    };
     mount(
       <BrowserRouter>
         <MainContext.Provider value={contextValue}>
           <Calendar />
         </MainContext.Provider>
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

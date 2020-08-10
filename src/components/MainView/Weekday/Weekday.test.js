@@ -9,6 +9,6 @@ describe('<Weekday />', () => {
       <BrowserRouter>
         <Weekday />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

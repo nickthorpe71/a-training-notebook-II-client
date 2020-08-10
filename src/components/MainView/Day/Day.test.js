@@ -9,6 +9,6 @@ describe('<Day />', () => {
       <BrowserRouter>
         <Day />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

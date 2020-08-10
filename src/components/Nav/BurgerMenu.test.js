@@ -9,6 +9,6 @@ describe('<BurgerMenu />', () => {
       <BrowserRouter>
         <BurgerMenu />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

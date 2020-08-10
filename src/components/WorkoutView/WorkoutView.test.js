@@ -5,11 +5,11 @@ import { mount } from 'enzyme';
 
 describe('<WorkoutView />', () => {
   it('renders without crashing', () => {
-    const match = { params: { workout_id: 1 } }
+    const match = { params: { workout_id: 1 } };
     mount(
       <BrowserRouter>
         <WorkoutView match={match} />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

@@ -9,6 +9,6 @@ describe('<App />', () => {
       <BrowserRouter>
         <App />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

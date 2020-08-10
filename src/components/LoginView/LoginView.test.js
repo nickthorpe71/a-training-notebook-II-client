@@ -9,6 +9,6 @@ describe('<LoginView />', () => {
       <BrowserRouter>
         <LoginView />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

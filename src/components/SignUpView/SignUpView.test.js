@@ -9,6 +9,6 @@ describe('<SignUpView />', () => {
       <BrowserRouter>
         <SignUpView />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

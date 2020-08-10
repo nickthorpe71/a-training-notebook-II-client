@@ -9,6 +9,6 @@ describe('<LandingView />', () => {
       <BrowserRouter>
         <LandingView />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

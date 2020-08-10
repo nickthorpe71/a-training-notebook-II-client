@@ -9,6 +9,6 @@ describe('<WorkoutSummary />', () => {
       <BrowserRouter>
         <WorkoutSummary />
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});

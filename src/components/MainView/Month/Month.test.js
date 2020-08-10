@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Month from './Month';
 import { mount } from 'enzyme';
-import MainContext from '../../../MainContext'
+import MainContext from '../../../MainContext';
 
 beforeEach(() => {
   jest.resetModules();
@@ -29,13 +29,13 @@ describe('<Month />', () => {
       setLoading: () => { },
       handleSetError: () => { },
       handleDayClick: () => { },
-    }
+    };
     mount(
       <BrowserRouter>
         <MainContext.Provider value={contextValue}>
           <Month />
         </MainContext.Provider>
       </BrowserRouter>,
-    )
-  })
-})
+    );
+  });
+});
