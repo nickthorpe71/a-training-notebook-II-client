@@ -105,7 +105,6 @@ export default class BurgerMenu extends React.Component {
         isOpen={this.state.isMyMenuOpen}
         onStateChange={this.isMenuOpen}
         right
-        width={'45%'}
       >
         <Link
           onClick={this.closeMenu}

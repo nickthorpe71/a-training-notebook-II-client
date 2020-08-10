@@ -20,3 +20,14 @@
   padding-top: 6rem;
   height: 100%;
 }
+
+.test-user-creds{
+  margin: 5rem;
+  margin-top: 5rem;
+}
+
+.test-user-creds p{
+  font-family: 'Hind Guntur', sans-serif;
+  font-size: 1rem;
+  margin: 0em;
+}

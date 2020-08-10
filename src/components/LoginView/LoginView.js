@@ -64,6 +64,11 @@ export default function LoginView(props) {
           </section>
         </div>
       </form>
+      <div className="test-user-creds">
+        <p>Demo Credentials:</p>
+        <p>username: testuser</p>
+        <p>password: Test12345</p>
+      </div>
     </div>
   );
 }
