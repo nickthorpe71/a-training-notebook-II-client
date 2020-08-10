@@ -9,12 +9,28 @@ const TokenService = {
     window.localStorage.setItem(config.ID_KEY, id);
   },
 
+  saveUsername(username) {
+    window.localStorage.setItem(config.USERNAME_KEY, username);
+  },
+
+  saveEmail(email) {
+    window.localStorage.setItem(config.EMAIL_KEY, email);
+  },
+
   getAuthToken() {
     return window.localStorage.getItem(config.TOKEN_KEY);
   },
 
   getUserId() {
     return window.localStorage.getItem(config.ID_KEY);
+  },
+
+  getUsername() {
+    return window.localStorage.getItem(config.USERNAME_KEY);
+  },
+
+  getEmail() {
+    return window.localStorage.getItem(config.EMAIL_KEY);
   },
 
   clearAuthToken() {

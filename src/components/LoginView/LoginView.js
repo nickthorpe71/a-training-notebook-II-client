@@ -13,8 +13,6 @@ export default function LoginView(props) {
     event.preventDefault();
 
     const { username, password } = event.target;
-    console.log(username.value);
-    console.log(password.value);
 
     context.setLoading(true);
     AuthApiService.postLogin({
@@ -22,13 +20,8 @@ export default function LoginView(props) {
       password: password.value,
     })
       .then((res) => {
-        console.log(username.value);
-        console.log(password.value);
-        username.value = "";
-        password.value = "";
         TokenService.saveAuthToken(res.authToken);
         TokenService.saveUserId(res.user_id);
-        context.handleLoginState(true);
         context.setLoading(false);
         props.history.push("/");
       })
@@ -38,6 +31,12 @@ export default function LoginView(props) {
       });
   };
 
+  function checkUsername() {
+    if (TokenService.getUsername())
+      return TokenService.getUsername();
+    return '';
+  }
+
   return (
     <div className="login-bg">
       <form onSubmit={handleSubmitJwtAuth}>
@@ -46,7 +45,7 @@ export default function LoginView(props) {
           {context.error && <p className="error">{context.error}</p>}
           <section className="form-section">
             <label className="input-title" htmlFor="username"><b>Username</b></label>
-            <input className="underline-input" type="text" name="username" required />
+            <input className="underline-input" type="text" defaultValue={checkUsername()} name="username" required />
           </section>
           <section className="form-section">
             <label className="input-title" htmlFor="password"><b>Password</b></label>
@@ -58,6 +57,7 @@ export default function LoginView(props) {
               <button
                 type="button"
                 className="unlit-button"
+                onClick={() => context.handleSetError(false)}
               >Cancel
             </button>
             </Link>

@@ -1,7 +1,9 @@
 import config from '../config';
+import TokenService from '../services/token-service';
 
 const AuthApiService = {
   postLogin(credentials) {
+    TokenService.saveUsername(credentials.username);
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: 'POST',
       headers: {
@@ -17,6 +19,8 @@ const AuthApiService = {
   },
 
   postUser(user) {
+    TokenService.saveUsername(user.username);
+    TokenService.saveEmail(user.email);
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {

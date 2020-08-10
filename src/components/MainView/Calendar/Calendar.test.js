@@ -29,9 +29,6 @@ describe('<Calendar />', () => {
       setLoading: () => { },
       handleSetError: () => { },
       handleDayClick: () => { },
-      handleLoginState: () => { },
-      handleRegisteredState: () => { },
-      saveUserInfo: () => { },
     };
     mount(
       <BrowserRouter>

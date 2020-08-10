@@ -3,6 +3,7 @@ import './SignUpView.css';
 import AuthApiService from '../../services/auth-api-service';
 import MainContext from '../../MainContext';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 
 export default class SignUpView extends React.Component {
   static contextType = MainContext;
@@ -18,13 +19,6 @@ export default class SignUpView extends React.Component {
       email: email.value,
     })
       .then((user) => {
-        console.log(username.value);
-        console.log(password.value);
-        console.log(email.value);
-        username.value = "";
-        password.value = "";
-        email.value = "";
-        this.context.handleRegisteredState(true);
         this.context.setLoading(false);
         this.handleLoginAfterRegister(username.value, password.value);
       })
@@ -38,6 +32,18 @@ export default class SignUpView extends React.Component {
     this.props.history.push("/login");
   };
 
+  checkUsername = () => {
+    if (TokenService.getUsername())
+      return TokenService.getUsername();
+    return '';
+  };
+
+  checkEmail = () => {
+    if (TokenService.getEmail())
+      return TokenService.getEmail();
+    return '';
+  };
+
   render() {
     return (
       <div className="signup-bg">
@@ -47,11 +53,11 @@ export default class SignUpView extends React.Component {
             <p>Please fill in this form to create an account.</p>
             <section className="form-section">
               <label className="input-title" htmlFor="username"><b>Set a username</b></label>
-              <input className="underline-input" type="text" name="username" required />
+              <input className="underline-input" type="text" name="username" defaultValue={this.checkUsername()} required />
             </section>
             <section className="form-section">
               <label className="input-title" htmlFor="email"><b>What's your email?</b></label>
-              <input className="underline-input" type="text" name="email" required />
+              <input className="underline-input" type="text" name="email" defaultValue={this.checkEmail()} required />
             </section>
             <section className="form-section">
               <label className="input-title" htmlFor="password"><b>Password</b></label>
@@ -64,6 +70,7 @@ export default class SignUpView extends React.Component {
                 <button
                   type="button"
                   className="unlit-button"
+                  onClick={() => this.context.handleSetError(false)}
                 >Cancel
               </button>
               </Link>

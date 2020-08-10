@@ -66,8 +66,6 @@ export default class BurgerMenu extends React.Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
     TokenService.clearUserId();
-    this.context.handleLoginState(false);
-    this.context.handleRegisteredState(false);
     this.context.handleSetError(null);
     this.closeMenu();
   };
