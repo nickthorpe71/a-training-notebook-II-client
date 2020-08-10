@@ -1,7 +1,7 @@
 import React from 'react';
 import Context from '../../MainContext';
-import TokenService from '../../services/token-service'
-import WorkoutsApiService from '../../services/workouts-api-service'
+import TokenService from '../../services/token-service';
+import WorkoutsApiService from '../../services/workouts-api-service';
 import './WorkoutView.css';
 
 export default class WorkoutView extends React.Component {
@@ -33,26 +33,26 @@ export default class WorkoutView extends React.Component {
             workout_end_time: (workout[0].workout_end_time).slice(0, 5),
             workout_date: this.extractDate(new Date(workout[0].workout_date)),
             exercises: workout[0].exercises,
-          }
+          };
 
           this.setState({
             ...workoutToInsert
-          })
-        })
+          });
+        });
     }
     this.setState({
       workout_date: this.extractDate(this.context.selectedDate),
     });
 
-  }
+  };
 
   extractDate = (date = new Date()) => {
     return date.toISOString().slice(0, 10);
-  }
+  };
 
   extractTime = (date) => {
     return String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
-  }
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -63,18 +63,18 @@ export default class WorkoutView extends React.Component {
         .then(() => {
           this.props.history.push('/');
           this.context.setLoading(false);
-        })
+        });
     } else {
       this.context.setLoading(true);
       WorkoutsApiService.updateWorkout(this.state.id, this.state)
         .then(() => {
           this.props.history.push('/');
           this.context.setLoading(false);
-        })
+        });
     }
 
 
-  }
+  };
 
   handleDeleteClick = (event) => {
     event.preventDefault();
@@ -84,11 +84,11 @@ export default class WorkoutView extends React.Component {
         this.props.history.push('/');
         this.context.setLoading(false);
       });
-  }
+  };
 
   handleBackButton = () => {
     this.props.history.push('/');
-  }
+  };
 
   handleChange = (event) => {
     event.preventDefault();
@@ -98,11 +98,11 @@ export default class WorkoutView extends React.Component {
       ...this.state,
       [event.target.name]: value
     });
-  }
+  };
 
   getFromState = (key) => {
     return this.state[key];
-  }
+  };
 
   renderDeleteButton = () => {
     return (
@@ -111,8 +111,8 @@ export default class WorkoutView extends React.Component {
         onClick={this.handleDeleteClick}
       >delete
       </button>
-    )
-  }
+    );
+  };
 
   render() {
     return (

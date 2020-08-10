@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Context from '../../../MainContext';
-import WorkoutSummary from '../WorkoutSummary/WorkoutSummary'
+import WorkoutSummary from '../WorkoutSummary/WorkoutSummary';
 import { IoIosAddCircleOutline } from "react-icons/io";
-import './DayPreview.css'
+import './DayPreview.css';
 
 export default function DayPreview(props) {
 
@@ -18,7 +18,7 @@ export default function DayPreview(props) {
   day[5] = "Fri";
   day[6] = "Sat";
 
-  const todaysDate = ` ${context.selectedDate.getMonth() + 1}/${context.selectedDate.getDate()}`
+  const todaysDate = ` ${context.selectedDate.getMonth() + 1}/${context.selectedDate.getDate()}`;
   const displayDate = day[context.selectedDate.getDay()];
 
   function renderWorkouts() {

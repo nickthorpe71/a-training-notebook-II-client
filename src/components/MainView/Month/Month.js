@@ -1,8 +1,8 @@
 import React from 'react';
-import Weekday from '../Weekday/Weekday'
-import Day from '../Day/Day'
+import Weekday from '../Weekday/Weekday';
+import Day from '../Day/Day';
 import Context from '../../../MainContext';
-import './Month.css'
+import './Month.css';
 
 
 export default class Month extends React.Component {
@@ -12,7 +12,7 @@ export default class Month extends React.Component {
     this.state = {
       hoveredDate: null,
       dateDots: {}
-    }
+    };
   }
 
   static contextType = Context;
@@ -41,7 +41,7 @@ export default class Month extends React.Component {
           title={weekdayAbbreviation(weekday)}
           label={weekday}
         />
-      )
+      );
     });
 
     const weeks = getWeeksForMonth(month, year);
@@ -51,7 +51,7 @@ export default class Month extends React.Component {
         <div role="row" className="week" key={index}>
           {week.map(this.renderWeek)}
         </div>
-      )
+      );
     });
 
     return (
@@ -61,13 +61,13 @@ export default class Month extends React.Component {
         </div>
         {weeksMarkup}
       </>
-    )
+    );
   }
 
   renderWeek = (fullDate, dayIndex) => {
     const { hoverDate } = this.state;
     if (fullDate == null) {
-      return <Day key={dayIndex} />
+      return <Day key={dayIndex} />;
     }
 
     const date = fullDate.getDate();
@@ -81,20 +81,20 @@ export default class Month extends React.Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       />
-    )
-  }
+    );
+  };
 
   handleMouseEnter = (date) => {
     this.setState({
       hoverDate: date,
-    })
-  }
+    });
+  };
 
   handleMouseLeave = () => {
     this.setState({
       hoverDate: null,
-    })
-  }
+    });
+  };
 
 }
 

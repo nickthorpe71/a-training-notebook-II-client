@@ -4,7 +4,7 @@ import WorkoutsApiService from './services/workouts-api-service';
 import { Icon } from '@iconify/react';
 import circleFill from '@iconify/icons-bi/circle-fill';
 
-const MainContext = React.createContext({})
+const MainContext = React.createContext({});
 
 export default MainContext;
 
@@ -37,9 +37,9 @@ export class MainProvider extends Component {
           dateDots,
           selectedDate: newFullDate,
           loading: false
-        })
+        });
       });
-  }
+  };
 
   changeSelectedMonth = (newMonth) => {
     const { selectedDate } = this.state;
@@ -56,12 +56,12 @@ export class MainProvider extends Component {
           dateDots,
           selectedDate: newFullDate,
           loading: false
-        })
+        });
       });
-  }
+  };
 
   changeSelectedDate = (date) => {
-    const searchDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    const searchDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
     WorkoutsApiService.getWorkoutsByDate(searchDate)
       .then((res) => {
@@ -71,16 +71,16 @@ export class MainProvider extends Component {
           editing: true,
           loading: false
         });
-      })
-  }
+      });
+  };
 
   setLoading = (loading) => {
     this.setState({ loading });
-  }
+  };
 
   handleSetError = (error) => {
     this.setState({ error, loading: false });
-  }
+  };
 
   saveUserInfo = (username, email) => {
     this.setState({ username, email });
@@ -107,7 +107,7 @@ export class MainProvider extends Component {
       newDay
     );
 
-    const searchDate = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${newDay}`
+    const searchDate = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${newDay}`;
 
     WorkoutsApiService.getWorkoutsByDate(searchDate)
       .then((res) => {
@@ -117,8 +117,8 @@ export class MainProvider extends Component {
           editing: true,
           loading: false
         });
-      })
-  }
+      });
+  };
 
   renderLoading = () => {
     return (
@@ -126,34 +126,34 @@ export class MainProvider extends Component {
         <h1 className="loading-text">one moment...</h1>
         <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
-    )
-  }
+    );
+  };
 
   renderMain = (value) => {
     return (
       < MainContext.Provider value={value} >
         {this.props.children}
       </MainContext.Provider >
-    )
-  }
+    );
+  };
 
   checkIfLoading = () => {
     return this.state.loading;
-  }
+  };
 
   determineWorkoutDotsCall = (searchMonth, searchYear) => {
-    let dateDots = {}
+    let dateDots = {};
 
     return WorkoutsApiService.getWorkoutsByMonth(String(searchMonth).padStart(2, '0'), searchYear)
       .then(res => {
         if (!res) {
-          return
+          return;
         }
 
         let count = res.length;
         for (let i = 0; i < count; i++) {
-          const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0')
-          dateDots[workoutDay] = <Icon color={'aqua'} icon={circleFill} />
+          const workoutDay = String(res[i].workout_date.slice(8, 10)).padStart(2, '0');
+          dateDots[workoutDay] = <Icon color={'aqua'} icon={circleFill} />;
         }
         for (let i = 1; i <= 31; i++) {
           const iKey = String(i).padStart(2, '0');
@@ -163,16 +163,16 @@ export class MainProvider extends Component {
         }
         return dateDots;
       });
-  }
+  };
 
   determineWorkoutDots = () => {
     const searchMonth = this.state.selectedDate.getMonth() + 1;
     const searchYear = this.state.selectedDate.getFullYear();
 
     this.determineWorkoutDotsCall(searchMonth, searchYear).then(dateDots => {
-      this.setState({ dateDots })
+      this.setState({ dateDots });
     });
-  }
+  };
 
   render() {
     const value = {

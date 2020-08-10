@@ -3,7 +3,7 @@ import Context from '../../MainContext';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
-import TokenService from '../../services/token-service'
+import TokenService from '../../services/token-service';
 import './BurgerMenu.css';
 
 export default class BurgerMenu extends React.Component {
@@ -12,7 +12,7 @@ export default class BurgerMenu extends React.Component {
     this.state = {
       isMyMenuOpen: false
     };
-  }
+  };
 
   static contextType = Context;
 
@@ -48,7 +48,7 @@ export default class BurgerMenu extends React.Component {
 
   closeMenu = () => {
     this.setState({ isMyMenuOpen: false });
-  }
+  };
 
   renderLogoutLink = () => {
     return (
@@ -60,8 +60,8 @@ export default class BurgerMenu extends React.Component {
           Logout
         </Link>
       </div>
-    )
-  }
+    );
+  };
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
@@ -75,7 +75,7 @@ export default class BurgerMenu extends React.Component {
   resetErrors = () => {
     this.context.handleSetError(null);
     this.closeMenu();
-  }
+  };
 
   renderLoginLink = () => {
     return (
@@ -97,8 +97,8 @@ export default class BurgerMenu extends React.Component {
           </Link>
         </div>
       </div>
-    )
-  }
+    );
+  };
   render() {
     return (
       <Menu

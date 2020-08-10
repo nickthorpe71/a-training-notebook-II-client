@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Context from '../../../MainContext';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import Month from '../Month/Month.js';
-import './Calendar.css'
+import './Calendar.css';
 
 export default class Calendar extends Component {
   static contextType = Context;
@@ -22,7 +22,7 @@ export default class Calendar extends Component {
     this.context.changeSelectedDate(newFullDate);
 
     this.context.changeSelectedMonth(newMonth);
-  }
+  };
 
   changeYear = (direction) => {
     const newYear = this.context.selectedDate.getFullYear() + direction;
@@ -34,8 +34,8 @@ export default class Calendar extends Component {
 
     this.context.changeSelectedDate(newFullDate);
 
-    this.context.changeSelectedYear(newYear)
-  }
+    this.context.changeSelectedYear(newYear);
+  };
 
   render() {
     const { selectedDate } = this.context;

@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config';
 import TokenService from './token-service';
 
 const WorkoutsApiService = {
@@ -13,7 +13,7 @@ const WorkoutsApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      );
   },
 
   getWorkoutsByMonth(month, year) {
@@ -27,7 +27,7 @@ const WorkoutsApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      );
   },
 
   getWorkoutById(id) {
@@ -41,7 +41,7 @@ const WorkoutsApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      );
   },
 
   postWorkout(newWorkout) {
@@ -57,7 +57,7 @@ const WorkoutsApiService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      );
   },
 
   deleteWorkout(workout_id) {
@@ -69,7 +69,7 @@ const WorkoutsApiService = {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({ user_id, workout_id }),
-    })
+    });
   },
 
   updateWorkout(workout_id, updatedWorkout) {
@@ -80,8 +80,8 @@ const WorkoutsApiService = {
         'authorization': `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(updatedWorkout),
-    })
+    });
   }
-}
+};
 
 export default WorkoutsApiService;

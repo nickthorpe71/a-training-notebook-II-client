@@ -1,7 +1,7 @@
 import React from 'react';
 import './SignUpView.css';
-import AuthApiService from '../../services/auth-api-service'
-import MainContext from '../../MainContext'
+import AuthApiService from '../../services/auth-api-service';
+import MainContext from '../../MainContext';
 import { Link } from 'react-router-dom';
 
 export default class SignUpView extends React.Component {
@@ -18,9 +18,9 @@ export default class SignUpView extends React.Component {
       email: email.value,
     })
       .then((user) => {
-        console.log(username.value)
-        console.log(password.value)
-        console.log(email.value)
+        console.log(username.value);
+        console.log(password.value);
+        console.log(email.value);
         username.value = "";
         password.value = "";
         email.value = "";
