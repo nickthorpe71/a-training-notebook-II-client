@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-a:focus, input:focus, button:focus, select:focus {
+a:focus, input:focus, select:focus {
   border: #2482bd 2.1px solid;
 }
 

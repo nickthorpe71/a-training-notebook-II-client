@@ -72,8 +72,6 @@ export default class WorkoutView extends React.Component {
           this.context.setLoading(false);
         });
     }
-
-
   };
 
   handleDeleteClick = (event) => {
@@ -131,6 +129,7 @@ export default class WorkoutView extends React.Component {
               placeholder="Title"
               defaultValue={this.getFromState('title')}
               onChange={this.handleChange}
+              required
             />
             <div className="time-date-container">
               <label htmlFor="workout_date"></label>
@@ -167,6 +166,7 @@ export default class WorkoutView extends React.Component {
               id="exercises"
               onChange={this.handleChange}
               value={this.getFromState('exercises')}
+              required
             ></textarea>
           </div>
           <section className="workout-view-footer">

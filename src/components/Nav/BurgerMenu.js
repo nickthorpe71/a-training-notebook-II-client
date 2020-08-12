@@ -50,19 +50,6 @@ export default class BurgerMenu extends React.Component {
     this.setState({ isMyMenuOpen: false });
   };
 
-  renderLogoutLink = () => {
-    return (
-      <div className='Header__logged-in remove-margin'>
-        <Link
-          className='bm-item'
-          onClick={this.handleLogoutClick}
-          to='/landing'>
-          Logout
-        </Link>
-      </div>
-    );
-  };
-
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
     TokenService.clearUserId();
@@ -75,28 +62,50 @@ export default class BurgerMenu extends React.Component {
     this.closeMenu();
   };
 
-  renderLoginLink = () => {
+  renderLogoutLink = () => {
     return (
-      <div className='Header__not-logged-in remove-margin'>
-        <div>
-          <Link
-            className='bm-item'
-            onClick={this.resetErrors}
-            to='/login'>
-            Log in
-          </Link>
-        </div>
-        <div>
-          <Link
-            className='bm-item'
-            onClick={this.resetErrors}
-            to='/signup'>
-            Sign up
-          </Link>
-        </div>
-      </div>
+      <Link
+        className='bm-item'
+        onClick={this.handleLogoutClick}
+        to='/landing'>
+        Logout
+      </Link>
     );
   };
+
+  renderHelpLink = () => {
+    return (
+      <Link
+        className='bm-item'
+        onClick={this.resetErrors}
+        to='/help'>
+        Help
+      </Link>
+    );
+  };
+
+  renderLoginLink = () => {
+    return (
+      <Link
+        className='bm-item'
+        onClick={this.resetErrors}
+        to='/login'>
+        Log in
+      </Link>
+    );
+  };
+
+  renderSignUpLink = () => {
+    return (
+      <Link
+        className='bm-item'
+        onClick={this.resetErrors}
+        to='/signup'>
+        Sign up
+      </Link>
+    );
+  };
+
   render() {
     return (
       <Menu
@@ -114,11 +123,11 @@ export default class BurgerMenu extends React.Component {
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
 
-        <Link
-          onClick={this.resetErrors}
-          to='/help'>
-          Help
-        </Link>
+        {!TokenService.hasAuthToken()
+          ? this.renderSignUpLink() : ''}
+
+        {TokenService.hasAuthToken()
+          ? this.renderHelpLink() : ''}
       </Menu>
     );
   }
