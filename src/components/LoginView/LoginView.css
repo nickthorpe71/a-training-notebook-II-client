@@ -35,5 +35,6 @@
 @media screen and (min-width: 30rem) {
   .login-form{
     width: 40%;
+    max-width: 350px;
   }
 }
