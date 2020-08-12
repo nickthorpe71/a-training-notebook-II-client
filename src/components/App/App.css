@@ -4,15 +4,15 @@
   justify-content: space-between;
   width: 100%;
   height: 6rem;
-  z-index: 99 !important;
 }
 
 .logo{
   font-family: 'Hind Guntur', sans-serif;
-  padding: 20px;
-  font-size: 20px;
+  padding: 1.2rem;
+  font-size: 1.2rem;
   display: inline-block;
   color: #CDCDBC;
+  z-index: 99 !important;
 }
 
 .burger-menu{
